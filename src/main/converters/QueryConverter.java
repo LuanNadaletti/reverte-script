@@ -1,6 +1,6 @@
-package query.converters;
+package main.converters;
 
-import query.models.Query;
+import main.models.Query;
 
 /**
  *

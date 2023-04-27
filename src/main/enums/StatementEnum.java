@@ -1,4 +1,4 @@
-package query.enums;
+package main.enums;
 
 import java.util.ArrayList;
 import java.util.Arrays;

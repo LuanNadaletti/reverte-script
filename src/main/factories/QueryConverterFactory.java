@@ -1,8 +1,8 @@
-package query.factories;
+package main.factories;
 
-import query.converters.InsertQueryConverter;
-import query.converters.QueryConverter;
-import query.models.Query;
+import main.converters.InsertQueryConverter;
+import main.converters.QueryConverter;
+import main.models.Query;
 
 /**
  *

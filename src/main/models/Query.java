@@ -1,4 +1,4 @@
-package query.models;
+package main.models;
 
 /**
  *

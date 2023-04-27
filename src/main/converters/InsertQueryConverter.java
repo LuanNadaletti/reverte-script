@@ -1,10 +1,10 @@
-package query.converters;
+package main.converters;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import query.models.Query;
+import main.models.Query;
 
 /**
  *

@@ -1,9 +1,9 @@
-package app;
+package main;
 
 import java.util.List;
-import query.factories.QueryConverterFactory;
-import query.models.Query;
-import query.parsers.QueryParser;
+import main.factories.QueryConverterFactory;
+import main.models.Query;
+import main.parsers.QueryParser;
 
 /**
  *
