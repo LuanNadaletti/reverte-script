@@ -4,6 +4,11 @@ import query.converters.InsertQueryConverter;
 import query.converters.QueryConverter;
 import query.models.Query;
 
+/**
+ *
+ * @author Luan Nadaletti
+ *
+ */
 public class QueryConverterFactory {
 
     public static QueryConverter getConverter(Query query) {

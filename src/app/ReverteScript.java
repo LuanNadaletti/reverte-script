@@ -5,6 +5,11 @@ import query.factories.QueryConverterFactory;
 import query.models.Query;
 import query.parsers.QueryParser;
 
+/**
+ *
+ * @author Luan Nadaletti
+ *
+ */
 public class ReverteScript {
 
     public static void main(String[] args) throws Exception {

@@ -6,6 +6,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import query.models.Query;
 
+/**
+ *
+ * @author Luan Nadaletti
+ *
+ */
 public class InsertQueryConverter implements QueryConverter {
 
     @Override
