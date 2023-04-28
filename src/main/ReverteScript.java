@@ -13,14 +13,14 @@ import main.parsers.QueryParser;
 public class ReverteScript {
 
     public static void main(String[] args) throws Exception {
-        String script = "INSERT INTO GER_MENU (MNU_COD, MNU_DESC) VALUES (1, 'TESTE')";
+        String script = "INSERT INTO GER_MENU (MNU_COD, MNU_DESC) VALUES (1, 'TESTE');"
+        		+ "CREATE TABLE GER_MENU ("
+        		+ "		MNU_COD INTEGER(60) PRIMARY KEY,"
+        		+ "		MNU_DESC VARCHAR(70)"
+        		+ ");";
 
         QueryParser queryParser = new QueryParser(script);
         List<Query> queryList = queryParser.parse();
-
-        for (Query query : queryList) {
-            System.out.println(query);
-        }
 
         for (Query query : queryList) {
             System.out.println(QueryReverserFactory.getConverter(query).reverse(query));
