@@ -1,14 +1,14 @@
-package test.factories;
+package test.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class QueryReverserFactoryTest {
+class InsertQueryReverserTest {
 
     @Test
     void test() {
-        fail("Not yet implemented");
+        fail("Not implemented yet");
     }
 
 }
