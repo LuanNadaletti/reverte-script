@@ -1,19 +1,19 @@
-package main.factories;
+package main.factories.queryreverser;
 
-import main.converters.InsertQueryConverter;
-import main.converters.QueryConverter;
 import main.models.Query;
+import main.reversers.InsertQueryReverser;
+import main.reversers.QueryReverser;
 
 /**
  *
  * @author Luan Nadaletti
  *
  */
-public class QueryConverterFactory {
+public class QueryReverserFactory {
 
-    public static QueryConverter getConverter(Query query) {
+    public static QueryReverser getConverter(Query query) {
         if (isInsertQuery(query)) {
-            return new InsertQueryConverter();
+            return new InsertQueryReverser();
         }
 
         return null;
