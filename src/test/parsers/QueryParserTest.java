@@ -1,9 +1,12 @@
 package test.parsers;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import main.models.InsertQuery;
 import main.models.Query;
 import main.parsers.QueryParser;
