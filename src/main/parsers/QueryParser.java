@@ -3,7 +3,7 @@ package main.parsers;
 import java.util.LinkedList;
 import java.util.List;
 import main.enums.QueryType;
-import main.factories.QueryFactory;
+import main.factories.query.QueryFactory;
 import main.models.Query;
 
 /**
@@ -30,7 +30,7 @@ public class QueryParser {
      * @return Uma lista de todas as declarações SQL encontradas no script.
      */
     public List<Query> parse() {
-        StringBuilder currentQuery = new StringBuilder();
+        StringBuilder currentStatement = new StringBuilder();
 
         while (currentIndex < script.length()) {
             char character = getNextCharacter();
@@ -40,24 +40,24 @@ public class QueryParser {
             }
 
             if (!insideString && character == ';') {
-                currentQuery.append(character);
-                addQuery(currentQuery.toString());
-                currentQuery = new StringBuilder();
+                currentStatement.append(character);
+                addQuery(currentStatement.toString());
+                currentStatement = new StringBuilder();
             } else {
-                currentQuery.append(character);
+                currentStatement.append(character);
             }
         }
 
-        if (currentQuery.length() > 0) {
-            addQuery(currentQuery.toString());
+        if (currentStatement.length() > 0) {
+            addQuery(currentStatement.toString());
         }
 
         return queries;
     }
 
-    private void addQuery(String query) {
-        QueryFactory factory = QueryType.fromStatement(query).getQueryFactory();
-        queries.add(factory.createQuery(query));
+    private void addQuery(String statement) {
+        QueryFactory factory = QueryType.fromStatement(statement).getQueryFactory();
+        queries.add(factory.createQuery(statement));
     }
 
     private char getNextCharacter() {
