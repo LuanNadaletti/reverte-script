@@ -18,10 +18,12 @@ public class InsertQueryReverser implements QueryReverser {
 
         for (int i = 0; i < insertQuery.getValues().size(); i++) {
             where +=  insertQuery.getFields().get(i) + " = " + insertQuery.getValues().get(i);
+            
+            if (i != insertQuery.getValues().size() - 1)
+            	where += " AND ";
         }
-        where += ";";
 
-        return String.format("DELETE FROM %s WHERE %s", insertQuery.getTable(), where);
+        return String.format("DELETE FROM %s WHERE %s;", insertQuery.getTable(), where);
     }
 
 }
