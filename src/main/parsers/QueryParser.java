@@ -57,6 +57,10 @@ public class QueryParser {
 
     private void addQuery(String statement) {
         QueryFactory factory = QueryType.fromStatement(statement).getQueryFactory();
+        if (factory == null) {
+            return;
+        }
+
         queries.add(factory.createQuery(statement));
     }
 

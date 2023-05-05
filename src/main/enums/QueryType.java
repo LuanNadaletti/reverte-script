@@ -1,8 +1,8 @@
 package main.enums;
 
-import main.factories.query.CreateTableQueryFactory;
-import main.factories.query.InsertQueryFactory;
-import main.factories.query.QueryFactory;
+import main.factories.CreateTableQueryFactory;
+import main.factories.InsertQueryFactory;
+import main.factories.QueryFactory;
 
 /**
  *
@@ -16,12 +16,12 @@ public enum QueryType {
             return new InsertQueryFactory();
         }
     },
-    
+
     CREATE_TABLE {
-		@Override
-		public QueryFactory getQueryFactory() {
-			return new CreateTableQueryFactory();
-		}
+        @Override
+        public QueryFactory getQueryFactory() {
+            return new CreateTableQueryFactory();
+        }
     };
 
     public abstract QueryFactory getQueryFactory();
@@ -30,12 +30,11 @@ public enum QueryType {
         if (statement.toLowerCase().startsWith("insert")) {
             return INSERT;
         }
-        
         if (statement.toLowerCase().startsWith("create")) {
-        	return CREATE_TABLE;
+            return CREATE_TABLE;
         }
 
-        throw new IllegalArgumentException("Invalid statement");
+        return null;
     }
 
 }

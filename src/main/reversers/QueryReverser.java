@@ -7,8 +7,8 @@ import main.models.Query;
  * @author Luan Nadaletti
  *
  */
-public interface QueryReverser {
+public abstract class QueryReverser {
 
-    public String reverse(Query query);
+    public abstract String reverse(Query query);
 
 }

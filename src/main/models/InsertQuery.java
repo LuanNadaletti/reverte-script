@@ -34,5 +34,4 @@ public class InsertQuery extends Query {
         this.values = values;
     }
 
-
 }
