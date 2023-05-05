@@ -1,12 +1,10 @@
-package main.factories.query;
+package main.factories;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
 import main.models.InsertQuery;
 import main.models.Query;
 
@@ -28,12 +26,8 @@ public class InsertQueryFactory implements QueryFactory {
         }
 
         String table = matcher.group(1);
-        List<String> fields = Arrays.asList(matcher.group(2).split(","))
-        		.stream().map(String::trim)
-        		.collect(Collectors.toList());
-        List<String> values = Arrays.asList(matcher.group(3).split(","))
-        		.stream().map(String::trim)
-        		.collect(Collectors.toList());
+        List<String> fields = Arrays.asList(matcher.group(2).split(",")).stream().map(String::trim).collect(Collectors.toList());
+        List<String> values = Arrays.asList(matcher.group(3).split(",")).stream().map(String::trim).collect(Collectors.toList());
 
         return new InsertQuery(statement, table, fields, values);
     }

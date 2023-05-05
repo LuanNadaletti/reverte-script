@@ -1,4 +1,4 @@
-package main.factories.query;
+package main.factories;
 
 import main.models.Query;
 
