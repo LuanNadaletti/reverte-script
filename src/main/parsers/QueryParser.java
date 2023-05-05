@@ -3,7 +3,7 @@ package main.parsers;
 import java.util.LinkedList;
 import java.util.List;
 import main.enums.QueryType;
-import main.factories.query.QueryFactory;
+import main.factories.QueryFactory;
 import main.models.Query;
 
 /**
