@@ -1,6 +1,22 @@
-# SQL Reverse Operations
+# ReverteScript
 
-O SQL Reverse Operations é um software em Java que permite receber um script SQL completo e realizar as operações reversas de cada consulta. Ele foi projetado para identificar e executar operações de reversão em consultas que não podem ser executadas mais de uma vez devido a restrições de chave primária (PK) e outras restrições.
+O ReverteScript é um software em Java que permite receber um script SQL completo e realizar as operações reversas de cada consulta. Ele foi projetado para identificar e executar operações de reversão em consultas que não podem ser executadas mais de uma vez devido a restrições de chave primária (PK) e outras restrições.
+
+## Status do Projeto
+
+⚠️ **Atenção: Este projeto está em fase de desenvolvimento e pode não estar totalmente funcional ainda.**
+
+Este projeto tem como objetivo implementar um software em Java para realizar as operações reversas de consultas SQL. No momento, algumas funcionalidades estão em desenvolvimento e podem não estar disponíveis. Atualmente, o projeto suporta a análise de consultas simples, mas consultas complexas ainda estão sendo implementadas. 
+
+### Funcionalidades já implementadas:
+- Análise de consultas simples.
+- Reversão de operações básicas.
+
+### Funcionalidades em desenvolvimento:
+- Reversão de consultas complexas.
+- Tratamento de restrições avançadas.
+
+Fique à vontade para explorar o código existente e contribuir com sugestões ou melhorias. Sua colaboração é bem-vinda!
 
 ## Funcionalidades
 
@@ -23,10 +39,10 @@ Para utilizar o SQL Reverse Operations, siga as etapas abaixo:
 2. **Execução**: Execute o software fornecendo o script SQL como entrada. Por exemplo:
 
 ```lua
-java -jar sql-reverse-operations.jar script.sql
+java -jar reverte-script.jar script.sql
 ```
 
-Onde `sql-reverse-operations.jar` é o arquivo JAR do software e `script.sql` é o arquivo contendo o script SQL a ser revertido.
+Onde `reverte-script.jar` é o arquivo JAR do software e `script.sql` é o arquivo contendo o script SQL a ser revertido.
 
 3. **Análise e Reversão**: O software analisará o script SQL e executará as operações de reversão em cada consulta. O resultado será exibido no console ou gravado em um arquivo, dependendo da configuração do software.
 
