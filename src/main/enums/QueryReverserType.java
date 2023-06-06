@@ -1,7 +1,7 @@
 package main.enums;
 
 import main.models.Query;
-import main.reversers.CreateTableReverser;
+import main.reversers.CreateTableQueryReverser;
 import main.reversers.InsertQueryReverser;
 import main.reversers.QueryReverser;
 
@@ -16,7 +16,7 @@ public enum QueryReverserType {
     CREATE_TABLE_REVERSER {
         @Override
         public QueryReverser getQueryReverser() {
-            return new CreateTableReverser();
+            return new CreateTableQueryReverser();
         }
     };
 
