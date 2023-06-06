@@ -12,6 +12,11 @@ import main.parsers.QueryParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+/**
+*
+* @author Luan Nadaletti
+*
+*/
 class QueryParserTest {
 
     @Test

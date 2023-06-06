@@ -1,5 +1,10 @@
 package main.models;
 
+/**
+*
+* @author Luan Nadaletti
+*
+*/
 public class CreateTableQuery extends Query {
 
 	public CreateTableQuery(String statement, String table) {

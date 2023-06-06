@@ -5,6 +5,11 @@ import java.util.regex.Pattern;
 import main.models.CreateTableQuery;
 import main.models.Query;
 
+/**
+*
+* @author Luan Nadaletti
+*
+*/
 public class CreateTableQueryFactory implements QueryFactory {
 
     @Override

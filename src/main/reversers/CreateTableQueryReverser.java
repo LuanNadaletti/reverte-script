@@ -3,6 +3,11 @@ package main.reversers;
 import main.models.CreateTableQuery;
 import main.models.Query;
 
+/**
+*
+* @author Luan Nadaletti
+*
+*/
 public class CreateTableQueryReverser extends QueryReverser {
 
     @Override
