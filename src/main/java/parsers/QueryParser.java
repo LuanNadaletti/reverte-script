@@ -1,10 +1,11 @@
-package main.parsers;
+package parsers;
 
 import java.util.LinkedList;
+
 import java.util.List;
-import main.enums.QueryType;
-import main.factories.QueryFactory;
-import main.models.Query;
+import enums.QueryType;
+import factories.QueryFactory;
+import models.Query;
 
 /**
  * The QueryParser class is responsible for parsing a given SQL script and

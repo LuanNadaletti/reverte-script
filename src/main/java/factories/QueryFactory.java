@@ -1,6 +1,6 @@
-package main.factories;
+package factories;
 
-import main.models.Query;
+import models.Query;
 
 /**
 *

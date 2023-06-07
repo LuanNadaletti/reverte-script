@@ -1,7 +1,8 @@
-package main.reversers;
+package reversers;
 
-import main.models.CreateTableQuery;
-import main.models.Query;
+import models.CreateTableQuery;
+
+import models.Query;
 
 /**
 *

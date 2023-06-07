@@ -1,9 +1,9 @@
-package main.enums;
+package enums;
 
-import main.factories.AlterTableQueryFactory;
-import main.factories.CreateTableQueryFactory;
-import main.factories.InsertQueryFactory;
-import main.factories.QueryFactory;
+import factories.AlterTableQueryFactory;
+import factories.CreateTableQueryFactory;
+import factories.InsertQueryFactory;
+import factories.QueryFactory;
 
 /**
  *

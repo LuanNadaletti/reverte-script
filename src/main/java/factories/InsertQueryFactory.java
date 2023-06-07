@@ -1,12 +1,13 @@
-package main.factories;
+package factories;
 
 import java.util.Arrays;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import main.models.InsertQuery;
-import main.models.Query;
+import models.InsertQuery;
+import models.Query;
 
 /**
  *

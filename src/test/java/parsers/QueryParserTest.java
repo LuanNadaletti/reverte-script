@@ -39,9 +39,9 @@ class QueryParserTest {
 	@DisplayName("CreateTableQueryParse")
 	void testCreateTableQueryParse() {
 		String script = "CREATE TABLE table_name ("
-				+ "    column1 datatype,"
-				+ "    column2 datatype,"
-				+ "    column3 datatype," + ");";
+				+ " column1 datatype,"
+				+ " column2 datatype,"
+				+ " column3 datatype);";
 
 		QueryParser parser = new QueryParser(script);
 		Query query = parser.parse().get(0);

@@ -1,6 +1,6 @@
-package main.reversers;
+package reversers;
 
-import main.models.Query;
+import models.Query;
 
 /**
  *

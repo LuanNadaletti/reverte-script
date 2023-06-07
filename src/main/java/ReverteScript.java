@@ -1,9 +1,9 @@
-package main;
 
 import java.util.List;
-import main.enums.QueryReverserType;
-import main.models.Query;
-import main.parsers.QueryParser;
+
+import enums.QueryReverserType;
+import models.Query;
+import parsers.QueryParser;
 
 /**
  *
