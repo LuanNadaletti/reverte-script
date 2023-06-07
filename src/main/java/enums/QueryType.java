@@ -1,7 +1,7 @@
 package enums;
 
 import factories.AlterTableQueryFactory;
-import factories.CreateTableQueryFactory;
+import factories.CreateQueryFactory;
 import factories.InsertQueryFactory;
 import factories.QueryFactory;
 
@@ -18,10 +18,10 @@ public enum QueryType {
         }
     },
 
-    CREATE_TABLE {
+    CREATE {
         @Override
         public QueryFactory getQueryFactory() {
-            return new CreateTableQueryFactory();
+            return new CreateQueryFactory();
         }
     },
 
@@ -39,7 +39,7 @@ public enum QueryType {
             return INSERT;
         }
         if (statement.trim().toLowerCase().startsWith("create")) {
-            return CREATE_TABLE;
+            return CREATE;
         }
         if (statement.trim().toLowerCase().startsWith("alter")) {
             return ALTER_TABLE;

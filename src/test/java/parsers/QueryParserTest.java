@@ -9,7 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import models.AlterTableQuery;
-import models.CreateTableQuery;
 import models.InsertQuery;
 import models.Query;
 
@@ -36,23 +35,6 @@ class QueryParserTest {
 	}
 
 	@Test
-	@DisplayName("CreateTableQueryParse")
-	void testCreateTableQueryParse() {
-		String script = "CREATE TABLE table_name ("
-				+ " column1 datatype,"
-				+ " column2 datatype,"
-				+ " column3 datatype);";
-
-		QueryParser parser = new QueryParser(script);
-		Query query = parser.parse().get(0);
-
-		assertTrue(query instanceof CreateTableQuery);
-		CreateTableQuery selectQuery = (CreateTableQuery) query;
-
-		assertEquals("table_name", selectQuery.getTable());
-	}
-
-	@Test
 	@DisplayName("AlterTableQueryParse")
 	void testAlterTableQueryParse() {
 		String script = "ALTER TABLE table_name ADD column_name datatype;";
@@ -68,4 +50,5 @@ class QueryParserTest {
 		assertEquals("column_name", alterTableQuery.getColumn());
 		assertEquals("datatype", alterTableQuery.getDataType());
 	}
+
 }

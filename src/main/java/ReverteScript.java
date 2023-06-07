@@ -17,7 +17,8 @@ public class ReverteScript {
                 + "CREATE TABLE GER_MENU ("
                 + "		MNU_COD INTEGER(60) PRIMARY KEY,"
                 + "		MNU_DESC VARCHAR(70)"
-                + ");";
+                + ");"
+                + "CREATE SEQUENCE GEN_GER_MENU;";
 
         QueryParser queryParser = new QueryParser(script);
         List<Query> queryList = queryParser.parse();
