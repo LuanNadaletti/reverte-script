@@ -81,10 +81,12 @@ public class QueryParser {
 	 * @param statement The SQL statement to be added.
 	 */
 	private void addQuery(String statement) {
-		QueryFactory factory = QueryType.fromStatement(statement).getQueryFactory();
-		if (factory == null) {
+		QueryType queryType = QueryType.fromStatement(statement);
+		if (queryType.equals(QueryType.UPDATE)) {
 			return;
 		}
+
+		QueryFactory factory = queryType.getQueryFactory();
 
 		queries.add(factory.createQuery(statement));
 	}
