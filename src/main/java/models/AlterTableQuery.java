@@ -37,24 +37,12 @@ public class AlterTableQuery extends Query {
         return operator;
     }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
     public String getColumn() {
         return column;
     }
 
-    public void setColumn(String column) {
-        this.column = column;
-    }
-
     public String getDataType() {
         return dataType;
-    }
-
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
     }
 
     @Override
