@@ -88,13 +88,13 @@ public enum QueryType {
 	public static QueryType fromStatement(String statement) {
 		statement = statement.trim().toLowerCase();
 
-		if (statement.startsWith("insert")) {
+		if (statement.contains("insert")) {
 			return INSERT;
 		}
-		if (statement.startsWith("create")) {
+		if (statement.contains("create")) {
 			return CREATE;
 		}
-		if (statement.startsWith("alter")) {
+		if (statement.contains("alter")) {
 			return ALTER_TABLE;
 		}
 		if (statement.contains("update")) {
