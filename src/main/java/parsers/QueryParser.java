@@ -82,8 +82,12 @@ public class QueryParser {
 	 */
 	private void addQuery(String statement) {
 		QueryType queryType = QueryType.fromStatement(statement);
-		if (queryType.equals(QueryType.UPDATE)) {
+		if (QueryType.UPDATE.equals(queryType)) {
 			return;
+		}
+
+		if (queryType == null) {
+			throw new IllegalArgumentException("Não é possível identificar o tipo da query: " + statement);
 		}
 
 		QueryFactory factory = queryType.getQueryFactory();
