@@ -1,10 +1,7 @@
 package enums;
 
 import models.Query;
-import reversers.AlterTableQueryReverser;
-import reversers.CreateQueryReverser;
-import reversers.InsertQueryReverser;
-import reversers.QueryReverser;
+import reversers.*;
 
 /**
  * The {@code QueryReverserType} enum represents different types of query
@@ -33,13 +30,16 @@ import reversers.QueryReverser;
  */
 public enum QueryReverserType {
 	INSERT_REVERSER {
+
 		@Override
 		public QueryReverser getQueryReverser() {
 			return new InsertQueryReverser();
 		}
+
 	},
 
 	CREATE_REVERSER {
+
 		@Override
 		public QueryReverser getQueryReverser() {
 			return new CreateQueryReverser();
