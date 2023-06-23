@@ -7,15 +7,38 @@ import models.AlterTableQuery;
 import models.Query;
 
 /**
+ * Factory class responsible for creating an {@link AlterTableQuery} object
+ * based on a provided statement. The statement is parsed using a regular
+ * expression pattern, and the extracted values are used to create the query
+ * object.
+ *
+ * The expected format of the statement is:
+ * ALTER TABLE <table> <operator> <column> <dataType>
+ *
+ * The factory uses regular expressions to extract the relevant parts from the
+ * statement and creates an {@link AlterTableQuery} object with the extracted
+ * values.
+ *
+ * This factory only supports parsing ALTER TABLE statements with the specified
+ * format.
  *
  * @author Luan Nadaletti
- *
  */
 public class AlterTableQueryFactory implements QueryFactory {
 
+	/**
+	 * Creates an {@link AlterTableQuery} object based on the provided statement.
+	 *
+	 * @param statement The ALTER TABLE statement to create the query from.
+	 *
+	 * @return An {@link AlterTableQuery} object representing the parsed query.
+	 *
+	 * @throws IllegalArgumentException If the statement is invalid and cannot be
+	 *                                  parsed.
+	 */
 	@Override
 	public Query createQuery(String statement) {
-		String regex = "ALTER\\s*TABLE\\s*(\\w*)\\s*(\\w*)\\s*(\\w*)\\s*(\\w*)";
+		String regex = "ALTER\\s*TABLE\\s*(\\w*)\\s*(\\w*)\\s*(\\w*(\\sCONSTRAINT)?)\\s*(\\w*)";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(statement);
 

@@ -44,31 +44,39 @@ import factories.QueryFactory;
  */
 public enum QueryType {
 	INSERT {
+
 		@Override
 		public QueryFactory getQueryFactory() {
 			return new InsertQueryFactory();
 		}
+
 	},
 
 	CREATE {
+
 		@Override
 		public QueryFactory getQueryFactory() {
 			return new CreateQueryFactory();
 		}
+
 	},
 
 	ALTER_TABLE {
+
 		@Override
 		public QueryFactory getQueryFactory() {
 			return new AlterTableQueryFactory();
 		}
+
 	},
 
 	UPDATE {
+
 		@Override
 		public QueryFactory getQueryFactory() {
 			return null;
 		}
+
 	};
 
 	/**

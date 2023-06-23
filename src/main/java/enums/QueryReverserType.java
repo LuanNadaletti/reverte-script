@@ -26,6 +26,7 @@ import reversers.*;
  * </p>
  *
  * @author Luan Nadaletti
+ *
  * @see QueryReverser
  */
 public enum QueryReverserType {
@@ -68,6 +69,7 @@ public enum QueryReverserType {
 	 * object.
 	 *
 	 * @param query The query object.
+	 *
 	 * @return The query reverser type associated with the query, or {@code null} if
 	 *         no match is found.
 	 */

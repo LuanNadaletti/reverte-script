@@ -29,6 +29,7 @@ import models.Query;
  * </p>
  *
  * @author Luan Nadaletti
+ *
  * @see Query
  */
 public class QueryParser {
