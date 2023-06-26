@@ -38,7 +38,7 @@ public class AlterTableQueryFactory implements QueryFactory {
 	 */
 	@Override
 	public Query createQuery(String statement) {
-		String regex = "ALTER\\s*TABLE\\s*(\\w*)\\s*(\\w*)\\s*(\\w*(\\sCONSTRAINT)?)\\s*(\\w*)";
+		String regex = "ALTER TABLE (\\w+)\\s+(ADD|DROP)\\s+(COLUMN\\s+)?(CONSTRAINT\\s+)?(\\w+)?(?:\\s+(\\w+))?";
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(statement);
 
@@ -48,10 +48,13 @@ public class AlterTableQueryFactory implements QueryFactory {
 
 		String table = matcher.group(1);
 		String operator = matcher.group(2);
-		String column = matcher.group(3);
-		String dataType = matcher.group(4);
+		String column = matcher.group(5);
+		String dataType = matcher.group(6);
 
-		return new AlterTableQuery(statement, table, operator, column, dataType);
+		boolean isColumnType = matcher.group(3) != null;
+		boolean isConstraintType = matcher.group(4) != null;
+
+		return new AlterTableQuery(statement, table, operator, column, dataType, isColumnType, isConstraintType);
 	}
 
 }

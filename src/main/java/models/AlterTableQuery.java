@@ -23,10 +23,12 @@ import java.util.Map;
 public class AlterTableQuery extends Query {
 
 	private String operator;
-	private String column;
+	private String target;
 	private String dataType;
+	private boolean columnType;
+	private boolean constraintType;
 
-	private static final Map<String, String> operatorToReverseOperation = Map.ofEntries(Map.entry("ADD", "DROP"),
+	private final Map<String, String> operatorToReverseOperation = Map.ofEntries(Map.entry("ADD", "DROP"),
 			Map.entry("DROP", "ADD"));
 
 	/**
@@ -36,14 +38,17 @@ public class AlterTableQuery extends Query {
 	 * @param statement The original statement of the ALTER TABLE query.
 	 * @param table     The name of the table being altered.
 	 * @param operator  The operator of the ALTER TABLE query (e.g., ADD, DROP).
-	 * @param column    The name of the column being modified.
+	 * @param target    The name of the target on table being modified.
 	 * @param dataType  The data type of the column (optional).
 	 */
-	public AlterTableQuery(String statement, String table, String operator, String column, String dataType) {
+	public AlterTableQuery(String statement, String table, String operator, String target, String dataType,
+			boolean columnType, boolean constraintType) {
 		super(statement, table);
 		this.operator = operator;
-		this.column = column;
+		this.target = target;
 		this.dataType = dataType;
+		this.columnType = columnType;
+		this.constraintType = constraintType;
 	}
 
 	/**
@@ -56,12 +61,22 @@ public class AlterTableQuery extends Query {
 		return operatorToReverseOperation.get(operator.toUpperCase());
 	}
 
+	public String getColumnDefinitionClause() {
+		if (columnType) {
+			return "COLUMN";
+		} else if (constraintType) {
+			return "CONSTRAINT";
+		}
+
+		return null;
+	}
+
 	public String getOperator() {
 		return operator;
 	}
 
-	public String getColumn() {
-		return column;
+	public String getTarget() {
+		return target;
 	}
 
 	public String getDataType() {

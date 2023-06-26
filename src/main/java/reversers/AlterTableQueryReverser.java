@@ -31,8 +31,10 @@ public class AlterTableQueryReverser extends QueryReverser {
 	public String reverse(Query query) {
 		AlterTableQuery alterTableQuery = (AlterTableQuery) query;
 
-		return String.format("ALTER TABLE %s %s %s;", alterTableQuery.getTable(), alterTableQuery.getReverseOperation(),
-				alterTableQuery.getColumn());
+		String columnDefinitionClause = alterTableQuery.getColumnDefinitionClause();
+
+		return String.format("ALTER TABLE %s %s %s %s;", alterTableQuery.getTable(),
+				alterTableQuery.getReverseOperation(), columnDefinitionClause, alterTableQuery.getTarget());
 	}
 
 }
