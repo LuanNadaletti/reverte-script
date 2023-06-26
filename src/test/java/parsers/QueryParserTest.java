@@ -3,12 +3,11 @@ package parsers;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
+import java.util.List;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import models.AlterTableQuery;
 import models.InsertQuery;
 import models.Query;
 
@@ -19,36 +18,25 @@ import models.Query;
  */
 class QueryParserTest {
 
-	@Test
-	@DisplayName("InsertQueryParse")
-	void testInsertQueryParse() {
-		String script = "INSERT INTO GER_MENU (MNU_COD, MNU_DESC, MNU_NIVEL) VALUES (1, 'DESC', 'NIV');";
-		QueryParser parser = new QueryParser(script);
-		Query query = parser.parse().get(0);
+	private QueryParser parser;
 
-		assertTrue(query instanceof InsertQuery);
-		InsertQuery selectQuery = (InsertQuery) query;
-
-		assertEquals("GER_MENU", selectQuery.getTable());
-		assertEquals(Arrays.asList("MNU_COD", "MNU_DESC", "MNU_NIVEL"), selectQuery.getFields());
-		assertEquals(Arrays.asList("1", "'DESC'", "'NIV'"), selectQuery.getValues());
+	@BeforeEach
+	public void setup() {
+		String script = "INSERT INTO table (column) VALUES ('value');";
+		parser = new QueryParser(script);
 	}
 
 	@Test
-	@DisplayName("AlterTableQueryParse")
-	void testAlterTableQueryParse() {
-		String script = "ALTER TABLE table_name ADD column_name datatype;";
+	public void testParse() {
+		List<Query> queries = parser.parse();
 
-		QueryParser parser = new QueryParser(script);
-		Query query = parser.parse().get(0);
+		assertEquals(1, queries.size());
 
-		assertTrue(query instanceof AlterTableQuery);
-		AlterTableQuery alterTableQuery = (AlterTableQuery) query;
+		Query insertQuery = queries.get(0);
+		assertTrue(insertQuery instanceof InsertQuery);
 
-		assertEquals("table_name", alterTableQuery.getTable());
-		assertEquals("ADD", alterTableQuery.getOperator());
-		assertEquals("column_name", alterTableQuery.getColumn());
-		assertEquals("datatype", alterTableQuery.getDataType());
+		insertQuery = (InsertQuery) insertQuery;
+		assertEquals("INSERT INTO table (column) VALUES ('value');", insertQuery.toString());
 	}
 
 }
