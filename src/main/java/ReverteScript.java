@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import enums.QueryReverserType;
-import factories.InsertQueryFactory;
 import models.Query;
 import parsers.QueryParser;
 import reversers.QueryReverser;
