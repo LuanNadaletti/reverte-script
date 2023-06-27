@@ -94,18 +94,18 @@ public enum QueryType {
 	 *         match is found.
 	 */
 	public static QueryType fromStatement(String statement) {
-		statement = statement.trim().toLowerCase();
+		String statementTrimToLowerCase = statement.trim().toLowerCase();
 
-		if (statement.contains("insert")) {
+		if (statementTrimToLowerCase.contains("insert")) {
 			return INSERT;
 		}
-		if (statement.contains("create")) {
+		if (statementTrimToLowerCase.contains("create")) {
 			return CREATE;
 		}
-		if (statement.contains("alter")) {
+		if (statementTrimToLowerCase.contains("alter")) {
 			return ALTER_TABLE;
 		}
-		if (statement.contains("update")) {
+		if (statementTrimToLowerCase.contains("update")) {
 			return UPDATE;
 		}
 
