@@ -1,11 +1,11 @@
-package factories;
+package com.revertescript.factories;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import enums.CreateQueryType;
-import models.CreateQuery;
-import models.Query;
+import com.revertescript.enums.CreateQueryType;
+import com.revertescript.models.CreateQuery;
+import com.revertescript.models.Query;
 
 /**
  * Factory class responsible for creating a {@link CreateQuery} object based on

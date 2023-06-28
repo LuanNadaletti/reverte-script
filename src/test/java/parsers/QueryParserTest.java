@@ -8,8 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import models.InsertQuery;
-import models.Query;
+import com.revertescript.models.InsertQuery;
+import com.revertescript.models.Query;
+import com.revertescript.parsers.QueryParser;
 
 /**
  * @author Luan Nadaletti
@@ -20,13 +21,13 @@ class QueryParserTest {
 	private QueryParser parser;
 
 	@BeforeEach
-	public void setup() {
+	void setup() {
 		String script = "INSERT INTO table (column) VALUES ('value');";
 		parser = new QueryParser(script);
 	}
 
 	@Test
-	public void testParse() {
+	void testParse() {
 		List<Query> queries = parser.parse();
 
 		assertEquals(1, queries.size(), "O tamanho da lista de queries é superior a 1.");

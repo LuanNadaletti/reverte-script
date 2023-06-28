@@ -1,11 +1,11 @@
-package parsers;
+package com.revertescript.parsers;
 
 import java.util.LinkedList;
-
 import java.util.List;
-import enums.QueryType;
-import factories.QueryFactory;
-import models.Query;
+
+import com.revertescript.enums.QueryType;
+import com.revertescript.factories.QueryFactory;
+import com.revertescript.models.Query;
 
 /**
  * The QueryParser class is responsible for parsing a given SQL script and
@@ -17,29 +17,25 @@ import models.Query;
  * {@link #parse()} method is used to initiate the parsing.
  * </p>
  *
- * *
- * <p>
- * Usage example:
- *
- * <pre>{@code
- * String script = "INSERT INTO table (column) VALUES ('value');";
- * QueryParser parser = new QueryParser(script);
- * List<Query> queries = parser.parse();
- * }</pre>
- * </p>
- *
  * @author Luan Nadaletti
  *
  * @see Query
  */
 public class QueryParser {
 
-	private String script;
-	private List<Query> queries = new LinkedList<>();
+	private final char STRING_DELIMITER = '\'';
+
+	private final String script;
+	private final List<Query> queries = new LinkedList<>();
 
 	private int currentIndex;
 	private boolean insideString;
 
+	/**
+	 * Creates a new instance of QueryParser with the provided SQL script.
+	 *
+	 * @param script The SQL script to be parsed.
+	 */
 	public QueryParser(String script) {
 		this.script = script;
 	}
@@ -56,7 +52,7 @@ public class QueryParser {
 		while (currentIndex < script.length()) {
 			char character = getNextCharacter();
 
-			if (character == '\'') {
+			if (character == STRING_DELIMITER) {
 				handleStringDelimiter();
 			}
 

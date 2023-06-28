@@ -1,7 +1,7 @@
-package reversers;
+package com.revertescript.reversers;
 
-import models.AlterTableQuery;
-import models.Query;
+import com.revertescript.models.AlterTableQuery;
+import com.revertescript.models.Query;
 
 /**
  * Reverses an AlterTableQuery by generating the reversed SQL statement. This

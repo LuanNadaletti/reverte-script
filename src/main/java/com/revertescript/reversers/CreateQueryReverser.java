@@ -1,7 +1,7 @@
-package reversers;
+package com.revertescript.reversers;
 
-import models.CreateQuery;
-import models.Query;
+import com.revertescript.models.CreateQuery;
+import com.revertescript.models.Query;
 
 /**
  * Reverses a CreateQuery by generating the reversed SQL statement. This class

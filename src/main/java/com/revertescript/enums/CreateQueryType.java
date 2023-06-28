@@ -1,4 +1,4 @@
-package enums;
+package com.revertescript.enums;
 
 /**
  * Enumeration representing the types of create queries. Currently supports

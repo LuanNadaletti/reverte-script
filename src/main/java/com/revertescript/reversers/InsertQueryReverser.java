@@ -1,7 +1,7 @@
-package reversers;
+package com.revertescript.reversers;
 
-import models.InsertQuery;
-import models.Query;
+import com.revertescript.models.InsertQuery;
+import com.revertescript.models.Query;
 
 /**
  * Reverses an InsertQuery by generating the reversed SQL statement. This class

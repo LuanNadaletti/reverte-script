@@ -1,6 +1,6 @@
-package models;
+package com.revertescript.models;
 
-import enums.CreateQueryType;
+import com.revertescript.enums.CreateQueryType;
 
 /**
  * Represents a CREATE query, used to create a new database table. This class

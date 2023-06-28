@@ -1,6 +1,6 @@
-package reversers;
+package com.revertescript.reversers;
 
-import models.Query;
+import com.revertescript.models.Query;
 
 /**
  * The QueryReverser class is an abstract base class for query reversers. It

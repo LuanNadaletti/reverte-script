@@ -1,4 +1,4 @@
-package util;
+package com.revertescript.util;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
  *
  * @author Luan Nadaletti
  */
-public class TextFileReader {
+public final class TextFileReader {
 
 	private static final int BUFFER_SIZE = 8192;
 

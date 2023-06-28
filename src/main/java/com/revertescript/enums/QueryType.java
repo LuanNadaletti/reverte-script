@@ -1,11 +1,11 @@
-package enums;
+package com.revertescript.enums;
 
 import java.util.Locale;
 
-import factories.AlterTableQueryFactory;
-import factories.CreateQueryFactory;
-import factories.InsertQueryFactory;
-import factories.QueryFactory;
+import com.revertescript.factories.AlterTableQueryFactory;
+import com.revertescript.factories.CreateQueryFactory;
+import com.revertescript.factories.InsertQueryFactory;
+import com.revertescript.factories.QueryFactory;
 
 /**
  * The {@code QueryType} enum represents different types of SQL queries. Each

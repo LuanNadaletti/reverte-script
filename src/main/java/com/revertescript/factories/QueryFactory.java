@@ -1,6 +1,6 @@
-package factories;
+package com.revertescript.factories;
 
-import models.Query;
+import com.revertescript.models.Query;
 
 /**
  * The QueryFactory interface provides a contract for creating Query objects

@@ -1,14 +1,14 @@
-package revertescript;
+package com.revertescript;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import enums.QueryReverserType;
-import models.Query;
-import parsers.QueryParser;
-import reversers.QueryReverser;
-import util.TextFileReader;
+import com.revertescript.enums.QueryReverserType;
+import com.revertescript.models.Query;
+import com.revertescript.parsers.QueryParser;
+import com.revertescript.reversers.QueryReverser;
+import com.revertescript.util.TextFileReader;
 
 /**
  * This class represents a script responsible for reversing queries based on

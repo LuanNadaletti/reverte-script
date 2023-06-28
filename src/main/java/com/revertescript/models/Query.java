@@ -1,4 +1,4 @@
-package models;
+package com.revertescript.models;
 
 /**
  * Represents a database query. This is an abstract class that provides common
@@ -27,7 +27,7 @@ public abstract class Query {
 	 * @param statement The original statement of the query.
 	 * @param table     The name of the table associated with the query.
 	 */
-	public Query(String statement, String table) {
+	protected Query(String statement, String table) {
 		this.statement = statement;
 		this.table = table;
 	}

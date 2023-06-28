@@ -1,10 +1,10 @@
-package enums;
+package com.revertescript.enums;
 
-import models.Query;
-import reversers.AlterTableQueryReverser;
-import reversers.CreateQueryReverser;
-import reversers.InsertQueryReverser;
-import reversers.QueryReverser;
+import com.revertescript.models.Query;
+import com.revertescript.reversers.AlterTableQueryReverser;
+import com.revertescript.reversers.CreateQueryReverser;
+import com.revertescript.reversers.InsertQueryReverser;
+import com.revertescript.reversers.QueryReverser;
 
 /**
  * The {@code QueryReverserType} enum represents different types of query

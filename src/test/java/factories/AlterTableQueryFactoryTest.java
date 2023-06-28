@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import models.AlterTableQuery;
+import com.revertescript.factories.AlterTableQueryFactory;
+import com.revertescript.models.AlterTableQuery;
 
 /**
  * @author Luan Nadaletti
@@ -14,7 +15,7 @@ import models.AlterTableQuery;
 class AlterTableQueryFactoryTest {
 
 	@Test
-	public void testCreateQueryValidStatement() {
+	void testCreateQueryValidStatement() {
 		String statement = "ALTER TABLE myTable ADD COLUMN myColumn INT";
 		AlterTableQueryFactory factory = new AlterTableQueryFactory();
 		AlterTableQuery expectedQuery = new AlterTableQuery(statement, "myTable", "ADD", "myColumn", "INT", true,
@@ -31,7 +32,7 @@ class AlterTableQueryFactoryTest {
 	}
 
 	@Test
-	public void testCreateQueryInvalidStatement() {
+	void testCreateQueryInvalidStatement() {
 		String statement = "ALTER TABLE";
 		AlterTableQueryFactory factory = new AlterTableQueryFactory();
 

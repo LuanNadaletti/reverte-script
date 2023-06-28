@@ -1,4 +1,4 @@
-package models;
+package com.revertescript.models;
 
 import java.util.List;
 

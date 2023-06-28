@@ -1,13 +1,13 @@
-package factories;
+package com.revertescript.factories;
 
 import java.util.Arrays;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import models.InsertQuery;
-import models.Query;
+
+import com.revertescript.models.InsertQuery;
+import com.revertescript.models.Query;
 
 /**
  * Factory class responsible for creating an {@link InsertQuery} object based on

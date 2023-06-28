@@ -1,10 +1,10 @@
-package factories;
+package com.revertescript.factories;
 
 import java.util.regex.Matcher;
-
 import java.util.regex.Pattern;
-import models.AlterTableQuery;
-import models.Query;
+
+import com.revertescript.models.AlterTableQuery;
+import com.revertescript.models.Query;
 
 /**
  * Factory class responsible for creating an {@link AlterTableQuery} object
