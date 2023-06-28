@@ -35,10 +35,10 @@ import models.Query;
 public class QueryParser {
 
 	private String script;
-	private LinkedList<Query> queries = new LinkedList<>();
+	private List<Query> queries = new LinkedList<>();
 
-	private int currentIndex = 0;
-	private boolean insideString = false;
+	private int currentIndex;
+	private boolean insideString;
 
 	public QueryParser(String script) {
 		this.script = script;
@@ -63,7 +63,7 @@ public class QueryParser {
 			if (!insideString && character == ';') {
 				currentStatement.append(character);
 				addQuery(currentStatement.toString());
-				currentStatement = new StringBuilder();
+				currentStatement.setLength(0);
 			} else {
 				currentStatement.append(character);
 			}

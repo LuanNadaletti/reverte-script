@@ -1,3 +1,4 @@
+package revertescript;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,9 +31,9 @@ import util.TextFileReader;
 public class ReverteScript {
 
 	public static void main(String[] args) throws IOException {
-		if (args.length < 1) {
-			System.out.println("Caminho do arquivo não fornecido. Uso: 'java -jar ReverteScript <caminho_do_arquivo>'");
-			return;
+		if (args.length == 0) {
+			throw new IllegalArgumentException(
+					"Caminho do arquivo não fornecido. Uso: 'java -jar ReverteScript <caminho_do_arquivo>'");
 		}
 
 		String filePath = args[0];

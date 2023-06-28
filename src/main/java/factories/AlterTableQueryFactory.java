@@ -12,8 +12,9 @@ import models.Query;
  * expression pattern, and the extracted values are used to create the query
  * object.
  *
- * The expected format of the statement is:
- * ALTER TABLE <table> <operator> <column> <dataType>
+ * The expected format of the statement is: ALTER TABLE
+ * <table>
+ * <operator> <column> <dataType>
  *
  * The factory uses regular expressions to extract the relevant parts from the
  * statement and creates an {@link AlterTableQuery} object with the extracted
@@ -25,6 +26,9 @@ import models.Query;
  * @author Luan Nadaletti
  */
 public class AlterTableQueryFactory implements QueryFactory {
+
+	public AlterTableQueryFactory() {
+	}
 
 	/**
 	 * Creates an {@link AlterTableQuery} object based on the provided statement.

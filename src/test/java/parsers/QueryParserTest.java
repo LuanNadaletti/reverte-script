@@ -12,7 +12,6 @@ import models.InsertQuery;
 import models.Query;
 
 /**
- *
  * @author Luan Nadaletti
  *
  */
@@ -30,13 +29,14 @@ class QueryParserTest {
 	public void testParse() {
 		List<Query> queries = parser.parse();
 
-		assertEquals(1, queries.size());
+		assertEquals(1, queries.size(), "O tamanho da lista de queries é superior a 1.");
 
 		Query insertQuery = queries.get(0);
-		assertTrue(insertQuery instanceof InsertQuery);
+		assertTrue(insertQuery instanceof InsertQuery, "A query gerada não é uma InsertQuery.");
 
 		insertQuery = (InsertQuery) insertQuery;
-		assertEquals("INSERT INTO table (column) VALUES ('value');", insertQuery.toString());
+		assertEquals("INSERT INTO table (column) VALUES ('value');", insertQuery.toString(),
+				"O statement setado no objeto Query está incorreto.");
 	}
 
 }

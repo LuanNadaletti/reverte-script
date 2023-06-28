@@ -39,11 +39,11 @@ public enum CreateQueryType {
 	 *         found.
 	 */
 	public static CreateQueryType fromType(String type) {
-		if (type.toUpperCase().equals("TABLE")) {
+		if ("TABLE".equalsIgnoreCase(type)) {
 			return TABLE;
 		}
 
-		if (type.toUpperCase().equals("SEQUENCE")) {
+		if ("SEQUENCE".equalsIgnoreCase(type)) {
 			return SEQUENCE;
 		}
 

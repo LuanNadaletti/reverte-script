@@ -7,10 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import models.AlterTableQuery;
 
-public class AlterTableQueryFactoryTest {
+/**
+ * @author Luan Nadaletti
+ *
+ */
+class AlterTableQueryFactoryTest {
 
 	@Test
-	public void testCreateQuery_ValidStatement_ReturnsAlterTableQuery() {
+	public void testCreateQueryValidStatement() {
 		String statement = "ALTER TABLE myTable ADD COLUMN myColumn INT";
 		AlterTableQueryFactory factory = new AlterTableQueryFactory();
 		AlterTableQuery expectedQuery = new AlterTableQuery(statement, "myTable", "ADD", "myColumn", "INT", true,
@@ -18,16 +22,16 @@ public class AlterTableQueryFactoryTest {
 
 		AlterTableQuery actualQuery = (AlterTableQuery) factory.createQuery(statement);
 
-		assertEquals(expectedQuery.getClass(), actualQuery.getClass());
-		assertEquals(expectedQuery.toString(), actualQuery.toString());
-		assertEquals(expectedQuery.getTable(), actualQuery.getTable());
-		assertEquals(expectedQuery.getOperator(), actualQuery.getOperator());
-		assertEquals(expectedQuery.getTarget(), actualQuery.getTarget());
-		assertEquals(expectedQuery.getDataType(), actualQuery.getDataType());
+		assertEquals(expectedQuery.getClass(), actualQuery.getClass(), "As classes das querys estão diferentes.");
+		assertEquals(expectedQuery.toString(), actualQuery.toString(), "Os statements setados estão diferentes entre as querys.");
+		assertEquals(expectedQuery.getTable(), actualQuery.getTable(), "As tabelas setadas estão diferentes entre as querys.");
+		assertEquals(expectedQuery.getOperator(), actualQuery.getOperator(), "Os operadores setados estão diferentes entre as querys.");
+		assertEquals(expectedQuery.getTarget(), actualQuery.getTarget(), "Os targets setados estão diferentes entre as querys.");
+		assertEquals(expectedQuery.getDataType(), actualQuery.getDataType(), "Os dataType setados estão diferentes entre as querys.");
 	}
 
 	@Test
-	public void testCreateQuery_InvalidStatement_ThrowsIllegalArgumentException() {
+	public void testCreateQueryInvalidStatement() {
 		String statement = "ALTER TABLE";
 		AlterTableQueryFactory factory = new AlterTableQueryFactory();
 

@@ -12,8 +12,8 @@ import models.Query;
  * a provided statement. The statement is parsed using a regular expression
  * pattern, and the extracted values are used to create the query object.
  *
- * The expected format of the statement is:
- * CREATE <type> <table>
+ * The expected format of the statement is: CREATE <type>
+ * <table>
  *
  * The factory uses regular expressions to extract the type and table name from
  * the statement and creates a {@link CreateQuery} object with the extracted
@@ -28,6 +28,9 @@ import models.Query;
  * @author Luan Nadaletti
  */
 public class CreateQueryFactory implements QueryFactory {
+
+	public CreateQueryFactory() {
+	}
 
 	/**
 	 * Creates a {@link CreateQuery} object based on the provided statement.

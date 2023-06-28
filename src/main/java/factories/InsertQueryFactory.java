@@ -14,8 +14,9 @@ import models.Query;
  * a provided statement. The statement is parsed using a regular expression
  * pattern, and the extracted values are used to create the query object.
  *
- * The expected format of the statement is:
- * INSERT INTO <table> (<fields>) VALUES (<values>)
+ * The expected format of the statement is: INSERT INTO
+ * <table>
+ * (<fields>) VALUES (<values>)
  *
  * The factory uses regular expressions to extract the table name, fields, and
  * values from the statement and creates an {@link InsertQuery} object with the
@@ -35,6 +36,9 @@ import models.Query;
  * @author Luan Nadaletti
  */
 public class InsertQueryFactory implements QueryFactory {
+
+	public InsertQueryFactory() {
+	}
 
 	/**
 	 * Creates an {@link InsertQuery} object based on the provided statement.

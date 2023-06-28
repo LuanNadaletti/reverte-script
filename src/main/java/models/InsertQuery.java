@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class InsertQuery extends Query {
 
-	private List<String> fields;
-	private List<String> values;
+	private final List<String> fields;
+	private final List<String> values;
 
 	/**
 	 * Constructs an InsertQuery object with the provided statement, table name,

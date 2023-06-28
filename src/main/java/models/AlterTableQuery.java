@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -22,11 +23,11 @@ import java.util.Map;
  */
 public class AlterTableQuery extends Query {
 
-	private String operator;
-	private String target;
-	private String dataType;
-	private boolean columnType;
-	private boolean constraintType;
+	private final String operator;
+	private final String target;
+	private final String dataType;
+	private final boolean columnType;
+	private final boolean constraintType;
 
 	private final Map<String, String> operatorToReverseOperation = Map.ofEntries(Map.entry("ADD", "DROP"),
 			Map.entry("DROP", "ADD"));
@@ -35,11 +36,17 @@ public class AlterTableQuery extends Query {
 	 * Constructs an AlterTableQuery object with the provided statement, table name,
 	 * operator, column name, and data type.
 	 *
-	 * @param statement The original statement of the ALTER TABLE query.
-	 * @param table     The name of the table being altered.
-	 * @param operator  The operator of the ALTER TABLE query (e.g., ADD, DROP).
-	 * @param target    The name of the target on table being modified.
-	 * @param dataType  The data type of the column (optional).
+	 * @param statement      The original statement of the ALTER TABLE query.
+	 * @param table          The name of the table being altered.
+	 * @param operator       The operator of the ALTER TABLE query (e.g., ADD,
+	 *                       DROP).
+	 * @param target         The name of the target on table being modified.
+	 * @param dataType       The data type of the column (optional).
+	 * @param columnType     A flag indicating if the target is a column (true) or
+	 *                       not (false).
+	 * @param constraintType A flag indicating if the target is a constraint (true)
+	 *                       or not (false).
+	 *
 	 */
 	public AlterTableQuery(String statement, String table, String operator, String target, String dataType,
 			boolean columnType, boolean constraintType) {
@@ -58,9 +65,15 @@ public class AlterTableQuery extends Query {
 	 * @return The reverse operation for the operator.
 	 */
 	public String getReverseOperation() {
-		return operatorToReverseOperation.get(operator.toUpperCase());
+		return operatorToReverseOperation.get(operator.toUpperCase(Locale.ROOT));
 	}
 
+	/**
+	 * Gets the column definition clause based on the column and constraint types.
+	 *
+	 * @return The column definition clause ("COLUMN" or "CONSTRAINT") based on the
+	 *         types. Returns null if neither columnType nor constraintType is true.
+	 */
 	public String getColumnDefinitionClause() {
 		if (columnType) {
 			return "COLUMN";

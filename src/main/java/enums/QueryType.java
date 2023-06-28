@@ -1,5 +1,7 @@
 package enums;
 
+import java.util.Locale;
+
 import factories.AlterTableQueryFactory;
 import factories.CreateQueryFactory;
 import factories.InsertQueryFactory;
@@ -94,7 +96,7 @@ public enum QueryType {
 	 *         match is found.
 	 */
 	public static QueryType fromStatement(String statement) {
-		String statementTrimToLowerCase = statement.trim().toLowerCase();
+		String statementTrimToLowerCase = statement.trim().toLowerCase(Locale.ROOT);
 
 		if (statementTrimToLowerCase.contains("insert")) {
 			return INSERT;

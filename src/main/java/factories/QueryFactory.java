@@ -47,6 +47,6 @@ public interface QueryFactory {
 	 * @throws IllegalArgumentException If the statement is invalid or cannot be
 	 *                                  parsed.
 	 */
-	Query createQuery(String statement);
+	abstract Query createQuery(String statement);
 
 }

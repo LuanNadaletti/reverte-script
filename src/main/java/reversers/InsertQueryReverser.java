@@ -1,7 +1,6 @@
 package reversers;
 
 import models.InsertQuery;
-
 import models.Query;
 
 /**
@@ -32,13 +31,13 @@ public class InsertQueryReverser extends QueryReverser {
 	public String reverse(Query query) {
 		InsertQuery insertQuery = (InsertQuery) query;
 
-		String where = "";
+		StringBuilder where = new StringBuilder();
 
 		for (int i = 0; i < insertQuery.getValues().size(); i++) {
-			where += insertQuery.getFields().get(i) + " = " + insertQuery.getValues().get(i);
+			where.append(insertQuery.getFields().get(i)).append(" = ").append(insertQuery.getValues().get(i));
 
 			if (i != insertQuery.getValues().size() - 1) {
-				where += " AND ";
+				where.append(" AND ");
 			}
 		}
 

@@ -16,7 +16,7 @@ import enums.CreateQueryType;
  */
 public class CreateQuery extends Query {
 
-	private CreateQueryType createQueryType;
+	private final CreateQueryType createQueryType;
 
 	/**
 	 * Constructs a CreateQuery object with the provided statement, table name, and

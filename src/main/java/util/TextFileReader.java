@@ -2,18 +2,28 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * The {@code TextFileReader} class provides utility methods for reading the
  * contents of a text file.
+ *
+ * <p>
+ * The class includes a private constructor to prevent instantiation. It is
+ * designed as a utility class with only static methods, so there is no need to
+ * create instances of this class.
+ * </p>
  *
  * @author Luan Nadaletti
  */
 public class TextFileReader {
 
 	private static final int BUFFER_SIZE = 8192;
+
+	private TextFileReader() {
+	}
 
 	/**
 	 * Reads the contents of a text file and returns it as a string.
@@ -24,13 +34,15 @@ public class TextFileReader {
 	 */
 	public static String read(File file) throws IOException {
 		StringBuilder stringBuilder = new StringBuilder();
-		BufferedReader bufferedReader = new BufferedReader(new FileReader(file), BUFFER_SIZE);
+		BufferedReader bufferedReader = new BufferedReader(Files.newBufferedReader(Paths.get(file.getName())),
+				BUFFER_SIZE);
 
 		char[] buffer = new char[BUFFER_SIZE];
 
 		int charsRead;
-		while ((charsRead = bufferedReader.read(buffer, 0, BUFFER_SIZE)) != -1)
+		while ((charsRead = bufferedReader.read(buffer, 0, BUFFER_SIZE)) != -1) {
 			stringBuilder.append(buffer, 0, charsRead);
+		}
 
 		bufferedReader.close();
 		return stringBuilder.toString();
