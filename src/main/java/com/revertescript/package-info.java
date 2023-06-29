@@ -1,5 +1,8 @@
 /**
- * <p>This code is provided under the <a href="https://opensource.org/licenses/MIT">MIT License</a>:</p>
+ * <p>
+ * This code is provided under the
+ * <a href="https://opensource.org/licenses/MIT">MIT License</a>:
+ * </p>
  *
  * <pre>
  *  MIT License
@@ -24,10 +27,15 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  * </pre>
- *	
- */
-/**
- * @author Luan Nadaletti
  *
+ * <p>
+ * ReverteScript is a software that allows receiving a complete SQL script and
+ * performing the reverse operations of each query. It is designed to identify
+ * and execute reversal operations on queries that cannot be executed more than
+ * once due to primary key (PK) constraints and other restrictions.
+ * </p>
+ *
+ * @author Luan Nadaletti
+ * @version 1.0.0
  */
 package com.revertescript;
