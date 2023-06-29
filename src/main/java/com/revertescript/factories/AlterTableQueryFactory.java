@@ -27,38 +27,37 @@ import com.revertescript.models.Query;
  */
 public class AlterTableQueryFactory implements QueryFactory {
 
-	public AlterTableQueryFactory() {
-	}
+    /**
+     * Creates an {@link AlterTableQuery} object based on the provided
+     * statement.
+     *
+     * @param statement The ALTER TABLE statement to create the query from.
+     *
+     * @return An {@link AlterTableQuery} object representing the parsed query.
+     *
+     * @throws IllegalArgumentException If the statement is invalid and cannot
+     *                                  be parsed.
+     */
+    @Override
+    public Query createQuery(String statement) {
+        String regex = "ALTER TABLE (\\w+)\\s+(ADD|DROP)\\s+(COLUMN\\s+)?(CONSTRAINT\\s+)?(\\w+)?(?:\\s+(\\w+))?";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(statement);
 
-	/**
-	 * Creates an {@link AlterTableQuery} object based on the provided statement.
-	 *
-	 * @param statement The ALTER TABLE statement to create the query from.
-	 *
-	 * @return An {@link AlterTableQuery} object representing the parsed query.
-	 *
-	 * @throws IllegalArgumentException If the statement is invalid and cannot be
-	 *                                  parsed.
-	 */
-	@Override
-	public Query createQuery(String statement) {
-		String regex = "ALTER TABLE (\\w+)\\s+(ADD|DROP)\\s+(COLUMN\\s+)?(CONSTRAINT\\s+)?(\\w+)?(?:\\s+(\\w+))?";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(statement);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Invalid ALTER TABLE statement");
+        }
 
-		if (!matcher.find()) {
-			throw new IllegalArgumentException("Invalid ALTER TABLE statement");
-		}
+        String table = matcher.group(1);
+        String operator = matcher.group(2);
+        String column = matcher.group(5);
+        String dataType = matcher.group(6);
 
-		String table = matcher.group(1);
-		String operator = matcher.group(2);
-		String column = matcher.group(5);
-		String dataType = matcher.group(6);
+        boolean isColumnType = matcher.group(3) != null;
+        boolean isConstraintType = matcher.group(4) != null;
 
-		boolean isColumnType = matcher.group(3) != null;
-		boolean isConstraintType = matcher.group(4) != null;
-
-		return new AlterTableQuery(statement, table, operator, column, dataType, isColumnType, isConstraintType);
-	}
+        return new AlterTableQuery(statement, table, operator, column, dataType,
+                isColumnType, isConstraintType);
+    }
 
 }

@@ -37,16 +37,16 @@ import com.revertescript.models.Query;
  */
 public interface QueryFactory {
 
-	/**
-	 * Creates a Query object based on the provided statement.
-	 *
-	 * @param statement The statement to create the query from.
-	 *
-	 * @return A Query object representing the parsed query.
-	 *
-	 * @throws IllegalArgumentException If the statement is invalid or cannot be
-	 *                                  parsed.
-	 */
-	abstract Query createQuery(String statement);
+    /**
+     * Creates a Query object based on the provided statement.
+     *
+     * @param statement The statement to create the query from.
+     *
+     * @return A Query object representing the parsed query.
+     *
+     * @throws IllegalArgumentException If the statement is invalid or cannot be
+     *                                  parsed.
+     */
+    Query createQuery(String statement);
 
 }

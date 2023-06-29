@@ -37,36 +37,33 @@ import com.revertescript.models.Query;
  */
 public class InsertQueryFactory implements QueryFactory {
 
-	public InsertQueryFactory() {
-	}
+    /**
+     * Creates an {@link InsertQuery} object based on the provided statement.
+     *
+     * @param statement The INSERT statement to create the query from.
+     *
+     * @return An {@link InsertQuery} object representing the parsed query.
+     *
+     * @throws IllegalArgumentException If the statement is invalid and cannot
+     *                                  be parsed.
+     */
+    @Override
+    public Query createQuery(String statement) {
+        String regex = "\\s*INSERT\\s*INTO\\s*(\\w+)\\s*\\((.+)\\)\\s*VALUES\\s*\\((.+)\\)\\s*";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(statement);
 
-	/**
-	 * Creates an {@link InsertQuery} object based on the provided statement.
-	 *
-	 * @param statement The INSERT statement to create the query from.
-	 *
-	 * @return An {@link InsertQuery} object representing the parsed query.
-	 *
-	 * @throws IllegalArgumentException If the statement is invalid and cannot be
-	 *                                  parsed.
-	 */
-	@Override
-	public Query createQuery(String statement) {
-		String regex = "\\s*INSERT\\s*INTO\\s*(\\w+)\\s*\\((.+)\\)\\s*VALUES\\s*\\((.+)\\)\\s*";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(statement);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("Invalid INSERT statement");
+        }
 
-		if (!matcher.find()) {
-			throw new IllegalArgumentException("Invalid INSERT statement");
-		}
+        String table = matcher.group(1);
+        List<String> fields = Arrays.asList(matcher.group(2).split(","))
+                .stream().map(String::trim).collect(Collectors.toList());
+        List<String> values = Arrays.asList(matcher.group(3).split(","))
+                .stream().map(String::trim).collect(Collectors.toList());
 
-		String table = matcher.group(1);
-		List<String> fields = Arrays.asList(matcher.group(2).split(",")).stream().map(String::trim)
-				.collect(Collectors.toList());
-		List<String> values = Arrays.asList(matcher.group(3).split(",")).stream().map(String::trim)
-				.collect(Collectors.toList());
-
-		return new InsertQuery(statement, table, fields, values);
-	}
+        return new InsertQuery(statement, table, fields, values);
+    }
 
 }

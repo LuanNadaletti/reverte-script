@@ -17,21 +17,23 @@ import com.revertescript.models.Query;
  */
 public class CreateQueryReverser extends QueryReverser {
 
-	/**
-	 * Reverses a CreateQuery by generating the reversed SQL statement.
-	 *
-	 * @param query The CreateQuery to be reversed.
-	 *
-	 * @return The reversed SQL statement.
-	 *
-	 * @throws IllegalArgumentException If the provided query is not an instance of
-	 *                                  CreateQuery.
-	 */
-	@Override
-	public String reverse(Query query) {
-		CreateQuery createQuery = (CreateQuery) query;
+    /**
+     * Reverses a CreateQuery by generating the reversed SQL statement.
+     *
+     * @param query The CreateQuery to be reversed.
+     *
+     * @return The reversed SQL statement.
+     *
+     * @throws IllegalArgumentException If the provided query is not an instance
+     *                                  of CreateQuery.
+     */
+    @Override
+    public String reverse(Query query) {
+        CreateQuery createQuery = (CreateQuery) query;
 
-		return String.format("DROP %s %s;", createQuery.getCreateQueryType().getKeyWord(), createQuery.getTable());
-	}
+        return String.format("DROP %s %s;",
+                createQuery.getCreateQueryType().getKeyWord(),
+                createQuery.getTable());
+    }
 
 }

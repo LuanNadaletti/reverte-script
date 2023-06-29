@@ -14,13 +14,13 @@ import com.revertescript.models.Query;
  */
 public abstract class QueryReverser {
 
-	/**
-	 * Reverses the given query and returns the reversed version as a string.
-	 *
-	 * @param query The query to be reversed.
-	 *
-	 * @return The reversed query as a string.
-	 */
-	public abstract String reverse(Query query);
+    /**
+     * Reverses the given query and returns the reversed version as a string.
+     *
+     * @param query The query to be reversed.
+     *
+     * @return The reversed query as a string.
+     */
+    public abstract String reverse(Query query);
 
 }

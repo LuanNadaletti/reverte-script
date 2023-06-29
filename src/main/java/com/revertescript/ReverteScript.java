@@ -30,60 +30,64 @@ import com.revertescript.util.TextFileReader;
  */
 public class ReverteScript {
 
-	public static void main(String[] args) throws IOException {
-		if (args.length == 0) {
-			throw new IllegalArgumentException(
-					"Caminho do arquivo não fornecido. Uso: 'java -jar ReverteScript <caminho_do_arquivo>'");
-		}
+    public static void main(String[] args) throws IOException {
+        if (args.length == 0) {
+            throw new IllegalArgumentException(
+                    "Caminho do arquivo não fornecido. Uso: 'java -jar ReverteScript <caminho_do_arquivo>'");
+        }
 
-		String filePath = args[0];
+        String filePath = args[0];
 
-		try {
-			String script = TextFileReader.read(new File(filePath));
-			List<Query> queries = parseQueries(script);
+        try {
+            String script = TextFileReader.read(new File(filePath));
+            List<Query> queries = parseQueries(script);
 
-			for (Query query : queries) {
-				reverseQuery(query);
-			}
-		} catch (IOException e) {
-			System.out.println("Ocorreu um erro na leitura do arquivo: " + e.getMessage());
-		}
-	}
+            for (Query query : queries) {
+                reverseQuery(query);
+            }
+        } catch (IOException e) {
+            System.out.println(
+                    "Ocorreu um erro na leitura do arquivo: " + e.getMessage());
+        }
+    }
 
-	/**
-	 * Parses the provided script and returns a list of queries.
-	 *
-	 * @param script The script to be parsed.
-	 *
-	 * @return A list of queries extracted from the script.
-	 */
-	private static List<Query> parseQueries(String script) {
-		QueryParser queryParser = new QueryParser(script);
-		return queryParser.parse();
-	}
+    /**
+     * Parses the provided script and returns a list of queries.
+     *
+     * @param script The script to be parsed.
+     *
+     * @return A list of queries extracted from the script.
+     */
+    private static List<Query> parseQueries(String script) {
+        QueryParser queryParser = new QueryParser(script);
+        return queryParser.parse();
+    }
 
-	/**
-	 * Reverses the provided query based on the query type and displays the result
-	 * in the console.
-	 *
-	 * @param query The query to be reversed.
-	 *
-	 * @throws IllegalArgumentException      If the query cannot be reversed.
-	 * @throws UnsupportedOperationException If the query reversal is not supported.
-	 */
-	private static void reverseQuery(Query query) {
-		QueryReverserType reverserType = QueryReverserType.fromQuery(query);
-		if (reverserType == null) {
-			throw new IllegalArgumentException("Não é possível reverter a query: " + query);
-		}
+    /**
+     * Reverses the provided query based on the query type and displays the
+     * result in the console.
+     *
+     * @param query The query to be reversed.
+     *
+     * @throws IllegalArgumentException      If the query cannot be reversed.
+     * @throws UnsupportedOperationException If the query reversal is not
+     *                                       supported.
+     */
+    private static void reverseQuery(Query query) {
+        QueryReverserType reverserType = QueryReverserType.fromQuery(query);
+        if (reverserType == null) {
+            throw new IllegalArgumentException(
+                    "Não é possível reverter a query: " + query);
+        }
 
-		QueryReverser reverser = reverserType.getQueryReverser();
-		if (reverser == null) {
-			throw new UnsupportedOperationException("Reversão da query não suportada: " + query);
-		}
+        QueryReverser reverser = reverserType.getQueryReverser();
+        if (reverser == null) {
+            throw new UnsupportedOperationException(
+                    "Reversão da query não suportada: " + query);
+        }
 
-		String reversedQuery = reverser.reverse(query);
-		System.out.println(reversedQuery);
-	}
+        String reversedQuery = reverser.reverse(query);
+        System.out.println(reversedQuery);
+    }
 
 }

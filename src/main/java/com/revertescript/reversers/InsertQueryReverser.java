@@ -17,31 +17,33 @@ import com.revertescript.models.Query;
  */
 public class InsertQueryReverser extends QueryReverser {
 
-	/**
-	 * Reverses an InsertQuery by generating the reversed SQL statement.
-	 *
-	 * @param query The InsertQuery to be reversed.
-	 *
-	 * @return The reversed SQL statement.
-	 *
-	 * @throws IllegalArgumentException If the provided query is not an instance of
-	 *                                  InsertQuery.
-	 */
-	@Override
-	public String reverse(Query query) {
-		InsertQuery insertQuery = (InsertQuery) query;
+    /**
+     * Reverses an InsertQuery by generating the reversed SQL statement.
+     *
+     * @param query The InsertQuery to be reversed.
+     *
+     * @return The reversed SQL statement.
+     *
+     * @throws IllegalArgumentException If the provided query is not an instance
+     *                                  of InsertQuery.
+     */
+    @Override
+    public String reverse(Query query) {
+        InsertQuery insertQuery = (InsertQuery) query;
 
-		StringBuilder where = new StringBuilder();
+        StringBuilder where = new StringBuilder();
 
-		for (int i = 0; i < insertQuery.getValues().size(); i++) {
-			where.append(insertQuery.getFields().get(i)).append(" = ").append(insertQuery.getValues().get(i));
+        for (int i = 0; i < insertQuery.getValues().size(); i++) {
+            where.append(insertQuery.getFields().get(i)).append(" = ")
+                    .append(insertQuery.getValues().get(i));
 
-			if (i != insertQuery.getValues().size() - 1) {
-				where.append(" AND ");
-			}
-		}
+            if (i != insertQuery.getValues().size() - 1) {
+                where.append(" AND ");
+            }
+        }
 
-		return String.format("DELETE FROM %s WHERE %s;", insertQuery.getTable(), where);
-	}
+        return String.format("DELETE FROM %s WHERE %s;", insertQuery.getTable(),
+                where);
+    }
 
 }

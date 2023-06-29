@@ -18,27 +18,27 @@ package com.revertescript.models;
  */
 public abstract class Query {
 
-	protected final String statement;
-	protected final String table;
+    protected final String statement;
+    protected final String table;
 
-	/**
-	 * Constructs a Query object with the provided statement and table name.
-	 *
-	 * @param statement The original statement of the query.
-	 * @param table     The name of the table associated with the query.
-	 */
-	protected Query(String statement, String table) {
-		this.statement = statement;
-		this.table = table;
-	}
+    /**
+     * Constructs a Query object with the provided statement and table name.
+     *
+     * @param statement The original statement of the query.
+     * @param table     The name of the table associated with the query.
+     */
+    protected Query(String statement, String table) {
+        this.statement = statement;
+        this.table = table;
+    }
 
-	public String getTable() {
-		return table;
-	}
+    public String getTable() {
+        return table;
+    }
 
-	@Override
-	public String toString() {
-		return statement;
-	}
+    @Override
+    public String toString() {
+        return statement;
+    }
 
 }

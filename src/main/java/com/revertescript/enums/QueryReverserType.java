@@ -33,61 +33,63 @@ import com.revertescript.reversers.QueryReverser;
  * @see QueryReverser
  */
 public enum QueryReverserType {
-	INSERT_REVERSER {
+    INSERT_REVERSER {
 
-		@Override
-		public QueryReverser getQueryReverser() {
-			return new InsertQueryReverser();
-		}
+        @Override
+        public QueryReverser getQueryReverser() {
+            return new InsertQueryReverser();
+        }
 
-	},
+    },
 
-	CREATE_REVERSER {
+    CREATE_REVERSER {
 
-		@Override
-		public QueryReverser getQueryReverser() {
-			return new CreateQueryReverser();
-		}
+        @Override
+        public QueryReverser getQueryReverser() {
+            return new CreateQueryReverser();
+        }
 
-	},
+    },
 
-	ALTER_TABLE_REVERSER {
+    ALTER_TABLE_REVERSER {
 
-		@Override
-		public QueryReverser getQueryReverser() {
-			return new AlterTableQueryReverser();
-		}
+        @Override
+        public QueryReverser getQueryReverser() {
+            return new AlterTableQueryReverser();
+        }
 
-	};
+    };
 
-	/**
-	 * Returns the {@link QueryReverser} associated with this query reverser type.
-	 *
-	 * @return The query reverser for this query reverser type.
-	 */
-	public abstract QueryReverser getQueryReverser();
+    /**
+     * Returns the {@link QueryReverser} associated with this query reverser
+     * type.
+     *
+     * @return The query reverser for this query reverser type.
+     */
+    public abstract QueryReverser getQueryReverser();
 
-	/**
-	 * Determines the {@code QueryReverserType} based on the given {@link Query}
-	 * object.
-	 *
-	 * @param query The query object.
-	 *
-	 * @return The query reverser type associated with the query, or {@code null} if
-	 *         no match is found.
-	 */
-	public static QueryReverserType fromQuery(Query query) {
-		if (query.toString().contains("INSERT INTO") && query.toString().contains("VALUES")) {
-			return INSERT_REVERSER;
-		}
-		if (query.toString().contains("CREATE")) {
-			return CREATE_REVERSER;
-		}
-		if (query.toString().contains("ALTER TABLE")) {
-			return ALTER_TABLE_REVERSER;
-		}
+    /**
+     * Determines the {@code QueryReverserType} based on the given {@link Query}
+     * object.
+     *
+     * @param query The query object.
+     *
+     * @return The query reverser type associated with the query, or
+     *         {@code null} if no match is found.
+     */
+    public static QueryReverserType fromQuery(Query query) {
+        if (query.toString().contains("INSERT INTO")
+                && query.toString().contains("VALUES")) {
+            return INSERT_REVERSER;
+        }
+        if (query.toString().contains("CREATE")) {
+            return CREATE_REVERSER;
+        }
+        if (query.toString().contains("ALTER TABLE")) {
+            return ALTER_TABLE_REVERSER;
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }

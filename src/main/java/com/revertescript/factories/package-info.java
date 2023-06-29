@@ -4,6 +4,6 @@
  * the {@link com.revertescript.factories.QueryFactory} interface and provides a
  * method to create the corresponding query object.
  *
- * @version 1.0
+ * @version 1.0.0
  */
 package com.revertescript.factories;

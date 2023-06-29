@@ -45,73 +45,74 @@ import com.revertescript.factories.QueryFactory;
  * @see QueryFactory
  */
 public enum QueryType {
-	INSERT {
+    INSERT {
 
-		@Override
-		public QueryFactory getQueryFactory() {
-			return new InsertQueryFactory();
-		}
+        @Override
+        public QueryFactory getQueryFactory() {
+            return new InsertQueryFactory();
+        }
 
-	},
+    },
 
-	CREATE {
+    CREATE {
 
-		@Override
-		public QueryFactory getQueryFactory() {
-			return new CreateQueryFactory();
-		}
+        @Override
+        public QueryFactory getQueryFactory() {
+            return new CreateQueryFactory();
+        }
 
-	},
+    },
 
-	ALTER_TABLE {
+    ALTER_TABLE {
 
-		@Override
-		public QueryFactory getQueryFactory() {
-			return new AlterTableQueryFactory();
-		}
+        @Override
+        public QueryFactory getQueryFactory() {
+            return new AlterTableQueryFactory();
+        }
 
-	},
+    },
 
-	UPDATE {
+    UPDATE {
 
-		@Override
-		public QueryFactory getQueryFactory() {
-			return null;
-		}
+        @Override
+        public QueryFactory getQueryFactory() {
+            return null;
+        }
 
-	};
+    };
 
-	/**
-	 * Returns the {@link QueryFactory} associated with this query type.
-	 *
-	 * @return The query factory for this query type.
-	 */
-	public abstract QueryFactory getQueryFactory();
+    /**
+     * Returns the {@link QueryFactory} associated with this query type.
+     *
+     * @return The query factory for this query type.
+     */
+    public abstract QueryFactory getQueryFactory();
 
-	/**
-	 * Determines the {@code QueryType} based on the given SQL statement.
-	 *
-	 * @param statement The SQL statement.
-	 * @return The query type associated with the statement, or {@code null} if no
-	 *         match is found.
-	 */
-	public static QueryType fromStatement(String statement) {
-		String statementTrimToLowerCase = statement.trim().toLowerCase(Locale.ROOT);
+    /**
+     * Determines the {@code QueryType} based on the given SQL statement.
+     *
+     * @param statement The SQL statement.
+     * @return The query type associated with the statement, or {@code null} if
+     *         no match is found.
+     */
+    public static QueryType fromStatement(String statement) {
+        String statementTrimToLowerCase = statement.trim()
+                .toLowerCase(Locale.ROOT);
 
-		if (statementTrimToLowerCase.contains("insert")) {
-			return INSERT;
-		}
-		if (statementTrimToLowerCase.contains("create")) {
-			return CREATE;
-		}
-		if (statementTrimToLowerCase.contains("alter")) {
-			return ALTER_TABLE;
-		}
-		if (statementTrimToLowerCase.contains("update")) {
-			return UPDATE;
-		}
+        if (statementTrimToLowerCase.contains("insert")) {
+            return INSERT;
+        }
+        if (statementTrimToLowerCase.contains("create")) {
+            return CREATE;
+        }
+        if (statementTrimToLowerCase.contains("alter")) {
+            return ALTER_TABLE;
+        }
+        if (statementTrimToLowerCase.contains("update")) {
+            return UPDATE;
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 }
