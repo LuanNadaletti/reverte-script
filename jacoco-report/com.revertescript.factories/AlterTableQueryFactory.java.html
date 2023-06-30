@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlterTableQueryFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ReverteScript</a> &gt; <a href="index.source.html" class="el_package">com.revertescript.factories</a> &gt; <span class="el_source">AlterTableQueryFactory.java</span></div><h1>AlterTableQueryFactory.java</h1><pre class="source lang-java linenums">package com.revertescript.factories;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.revertescript.models.AlterTableQuery;
+import com.revertescript.models.Query;
+
+/**
+ * Factory class responsible for creating an {@link AlterTableQuery} object
+ * based on a provided statement. The statement is parsed using a regular
+ * expression pattern, and the extracted values are used to create the query
+ * object.
+ *
+ * The expected format of the statement is: ALTER TABLE
+ * &lt;table&gt;
+ * &lt;operator&gt; &lt;column&gt; &lt;dataType&gt;
+ *
+ * The factory uses regular expressions to extract the relevant parts from the
+ * statement and creates an {@link AlterTableQuery} object with the extracted
+ * values.
+ *
+ * This factory only supports parsing ALTER TABLE statements with the specified
+ * format.
+ *
+ * @author Luan Nadaletti
+ */
+<span class="fc" id="L28">public class AlterTableQueryFactory implements QueryFactory {</span>
+
+    /**
+     * Creates an {@link AlterTableQuery} object based on the provided
+     * statement.
+     *
+     * @param statement The ALTER TABLE statement to create the query from.
+     *
+     * @return An {@link AlterTableQuery} object representing the parsed query.
+     *
+     * @throws IllegalArgumentException If the statement is invalid and cannot
+     *                                  be parsed.
+     */
+    @Override
+    public Query createQuery(String statement) {
+<span class="fc" id="L43">        String regex = &quot;ALTER TABLE (\\w+)\\s+(ADD|DROP)\\s+(COLUMN\\s+)?(CONSTRAINT\\s+)?(\\w+)?(?:\\s+(\\w+))?&quot;;</span>
+<span class="fc" id="L44">        Pattern pattern = Pattern.compile(regex);</span>
+<span class="fc" id="L45">        Matcher matcher = pattern.matcher(statement);</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (!matcher.find()) {</span>
+<span class="fc" id="L48">            throw new IllegalArgumentException(&quot;Invalid ALTER TABLE statement&quot;);</span>
+        }
+
+<span class="fc" id="L51">        String table = matcher.group(1);</span>
+<span class="fc" id="L52">        String operator = matcher.group(2);</span>
+<span class="fc" id="L53">        String column = matcher.group(5);</span>
+<span class="fc" id="L54">        String dataType = matcher.group(6);</span>
+
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        boolean isColumnType = matcher.group(3) != null;</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">        boolean isConstraintType = matcher.group(4) != null;</span>
+
+<span class="fc" id="L59">        return new AlterTableQuery(statement, table, operator, column, dataType,</span>
+                isColumnType, isConstraintType);
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

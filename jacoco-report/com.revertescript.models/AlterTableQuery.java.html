@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlterTableQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ReverteScript</a> &gt; <a href="index.source.html" class="el_package">com.revertescript.models</a> &gt; <span class="el_source">AlterTableQuery.java</span></div><h1>AlterTableQuery.java</h1><pre class="source lang-java linenums">package com.revertescript.models;
+
+import java.util.Locale;
+import java.util.Map;
+
+/**
+ * Represents an ALTER TABLE query, which modifies the structure of a database
+ * table. This class extends the {@link Query} class and provides additional
+ * properties and functionality specific to ALTER TABLE queries.
+ *
+ * An ALTER TABLE query consists of an operator (e.g., ADD, DROP), a column
+ * name, and optionally a data type for the column.
+ *
+ * The class provides methods to retrieve the reverse operation for the given
+ * operator and to access the query's properties.
+ *
+ * The reverse operation is determined based on the operator using a predefined
+ * mapping in the {@link #operatorToReverseOperation} map.
+ *
+ * Instances of this class are immutable once created.
+ *
+ * @author Luan Nadaletti
+ */
+public class AlterTableQuery extends Query {
+
+    private final String operator;
+    private final String target;
+    private final String dataType;
+    private final boolean columnType;
+    private final boolean constraintType;
+
+<span class="fc" id="L32">    private final Map&lt;String, String&gt; operatorToReverseOperation = Map</span>
+<span class="fc" id="L33">            .ofEntries(Map.entry(&quot;ADD&quot;, &quot;DROP&quot;), Map.entry(&quot;DROP&quot;, &quot;ADD&quot;));</span>
+
+    /**
+     * Constructs an AlterTableQuery object with the provided statement, table
+     * name, operator, column name, and data type.
+     *
+     * @param statement      The original statement of the ALTER TABLE query.
+     * @param table          The name of the table being altered.
+     * @param operator       The operator of the ALTER TABLE query (e.g., ADD,
+     *                       DROP).
+     * @param target         The name of the target on table being modified.
+     * @param dataType       The data type of the column (optional).
+     * @param columnType     A flag indicating if the target is a column (true)
+     *                       or not (false).
+     * @param constraintType A flag indicating if the target is a constraint
+     *                       (true) or not (false).
+     *
+     */
+    public AlterTableQuery(String statement, String table, String operator,
+            String target, String dataType, boolean columnType,
+            boolean constraintType) {
+<span class="fc" id="L54">        super(statement, table);</span>
+<span class="fc" id="L55">        this.operator = operator;</span>
+<span class="fc" id="L56">        this.target = target;</span>
+<span class="fc" id="L57">        this.dataType = dataType;</span>
+<span class="fc" id="L58">        this.columnType = columnType;</span>
+<span class="fc" id="L59">        this.constraintType = constraintType;</span>
+<span class="fc" id="L60">    }</span>
+
+    /**
+     * Retrieves the reverse operation for the given operator. The reverse
+     * operation is determined based on the operator using a predefined mapping.
+     *
+     * @return The reverse operation for the operator.
+     */
+    public String getReverseOperation() {
+<span class="nc" id="L69">        return operatorToReverseOperation</span>
+<span class="nc" id="L70">                .get(operator.toUpperCase(Locale.ROOT));</span>
+    }
+
+    /**
+     * Gets the column definition clause based on the column and constraint
+     * types.
+     *
+     * @return The column definition clause (&quot;COLUMN&quot; or &quot;CONSTRAINT&quot;) based on
+     *         the types. Returns null if neither columnType nor constraintType
+     *         is true.
+     */
+    public String getColumnDefinitionClause() {
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (columnType) {</span>
+<span class="nc" id="L83">            return &quot;COLUMN&quot;;</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        } else if (constraintType) {</span>
+<span class="nc" id="L85">            return &quot;CONSTRAINT&quot;;</span>
+        }
+
+<span class="nc" id="L88">        return null;</span>
+    }
+
+    public String getOperator() {
+<span class="fc" id="L92">        return operator;</span>
+    }
+
+    public String getTarget() {
+<span class="fc" id="L96">        return target;</span>
+    }
+
+    public String getDataType() {
+<span class="fc" id="L100">        return dataType;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L105">        return statement;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

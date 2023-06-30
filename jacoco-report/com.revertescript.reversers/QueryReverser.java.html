@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryReverser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ReverteScript</a> &gt; <a href="index.source.html" class="el_package">com.revertescript.reversers</a> &gt; <span class="el_source">QueryReverser.java</span></div><h1>QueryReverser.java</h1><pre class="source lang-java linenums">package com.revertescript.reversers;
+
+import com.revertescript.models.Query;
+
+/**
+ * The QueryReverser class is an abstract base class for query reversers. It
+ * provides a common interface for all query reverser implementations and
+ * defines the contract for reversing queries.
+ *
+ * To create a custom query reverser, you should extend this class and implement
+ * the {@link #reverse(Query)} method.
+ *
+ * @author Luan Nadaletti
+ */
+<span class="nc" id="L15">public abstract class QueryReverser {</span>
+
+    /**
+     * Reverses the given query and returns the reversed version as a string.
+     *
+     * @param query The query to be reversed.
+     *
+     * @return The reversed query as a string.
+     */
+    public abstract String reverse(Query query);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

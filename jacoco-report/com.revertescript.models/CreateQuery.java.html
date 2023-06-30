@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateQuery.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ReverteScript</a> &gt; <a href="index.source.html" class="el_package">com.revertescript.models</a> &gt; <span class="el_source">CreateQuery.java</span></div><h1>CreateQuery.java</h1><pre class="source lang-java linenums">package com.revertescript.models;
+
+import com.revertescript.enums.CreateQueryType;
+
+/**
+ * Represents a CREATE query, used to create a new database table. This class
+ * extends the {@link Query} class and provides an additional property for the
+ * type of create query.
+ *
+ * The class provides a getter method to retrieve the create query type
+ * associated with the query.
+ *
+ * Instances of this class are immutable once created.
+ *
+ * @author Luan Nadaletti
+ */
+public class CreateQuery extends Query {
+
+    private final CreateQueryType createQueryType;
+
+    /**
+     * Constructs a CreateQuery object with the provided statement, table name,
+     * and create query type.
+     *
+     * @param statement       The original statement of the CREATE query.
+     * @param table           The name of the table being created.
+     * @param createQueryType The type of the create query (e.g., TABLE,
+     *                        SEQUENCE).
+     */
+    public CreateQuery(String statement, String table,
+            CreateQueryType createQueryType) {
+<span class="nc" id="L32">        super(statement, table);</span>
+<span class="nc" id="L33">        this.createQueryType = createQueryType;</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     * Retrieves the create query type associated with the query.
+     *
+     * @return The create query type.
+     */
+    public CreateQueryType getCreateQueryType() {
+<span class="nc" id="L42">        return createQueryType;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

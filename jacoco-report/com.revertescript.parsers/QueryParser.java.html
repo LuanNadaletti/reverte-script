@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ReverteScript</a> &gt; <a href="index.source.html" class="el_package">com.revertescript.parsers</a> &gt; <span class="el_source">QueryParser.java</span></div><h1>QueryParser.java</h1><pre class="source lang-java linenums">package com.revertescript.parsers;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import com.revertescript.enums.QueryType;
+import com.revertescript.factories.QueryFactory;
+import com.revertescript.models.Query;
+
+/**
+ * The QueryParser class is responsible for parsing a given SQL script and
+ * returning a list of all SQL statements found in the script.
+ *
+ * &lt;p&gt;
+ * This class uses a set of methods to perform the analysis and extraction of
+ * SQL statements. The SQL script is provided through the constructor, and the
+ * {@link #parse()} method is used to initiate the parsing.
+ * &lt;/p&gt;
+ *
+ * @author Luan Nadaletti
+ *
+ * @see Query
+ */
+public class QueryParser {
+
+    private static final char STRING_DELIMITER = '\'';
+
+    private final String script;
+<span class="fc" id="L29">    private final List&lt;Query&gt; queries = new LinkedList&lt;&gt;();</span>
+
+    private int currentIndex;
+    private boolean insideString;
+
+    /**
+     * Creates a new instance of QueryParser with the provided SQL script.
+     *
+     * @param script The SQL script to be parsed.
+     */
+<span class="fc" id="L39">    public QueryParser(String script) {</span>
+<span class="fc" id="L40">        this.script = script;</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Parses the provided SQL script and returns a list of all SQL statements
+     * found.
+     *
+     * @return A list of all SQL statements found in the script.
+     */
+    public List&lt;Query&gt; parse() {
+<span class="fc" id="L50">        StringBuilder currentStatement = new StringBuilder();</span>
+
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        while (currentIndex &lt; script.length()) {</span>
+<span class="fc" id="L53">            char character = getNextCharacter();</span>
+
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (character == STRING_DELIMITER) {</span>
+<span class="fc" id="L56">                handleStringDelimiter();</span>
+            }
+
+<span class="fc bfc" id="L59" title="All 4 branches covered.">            if (!insideString &amp;&amp; character == ';') {</span>
+<span class="fc" id="L60">                currentStatement.append(character);</span>
+<span class="fc" id="L61">                addQuery(currentStatement.toString());</span>
+<span class="fc" id="L62">                currentStatement.setLength(0);</span>
+            } else {
+<span class="fc" id="L64">                currentStatement.append(character);</span>
+            }
+<span class="fc" id="L66">        }</span>
+
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (currentStatement.length() &gt; 0) {</span>
+<span class="nc" id="L69">            addQuery(currentStatement.toString());</span>
+        }
+
+<span class="fc" id="L72">        return queries;</span>
+    }
+
+    /**
+     * Adds a new query to the list of queries.
+     *
+     * @param statement The SQL statement to be added.
+     */
+    private void addQuery(String statement) {
+<span class="fc" id="L81">        QueryType queryType = QueryType.fromStatement(statement);</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (QueryType.UPDATE.equals(queryType)) {</span>
+<span class="nc" id="L83">            return;</span>
+        }
+
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">        if (queryType == null) {</span>
+<span class="nc" id="L87">            throw new IllegalArgumentException(</span>
+                    &quot;Não é possível identificar o tipo da query: &quot; + statement);
+        }
+
+<span class="fc" id="L91">        QueryFactory factory = queryType.getQueryFactory();</span>
+
+<span class="fc" id="L93">        queries.add(factory.createQuery(statement));</span>
+<span class="fc" id="L94">    }</span>
+
+    /**
+     * Retrieves the next character from the SQL script.
+     *
+     * @return The next character from the script.
+     */
+    private char getNextCharacter() {
+<span class="fc" id="L102">        return script.charAt(currentIndex++);</span>
+    }
+
+    /**
+     * Handles the string delimiter ('), toggling the inside/outside string
+     * state.
+     */
+    private void handleStringDelimiter() {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        insideString = !insideString;</span>
+<span class="fc" id="L111">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

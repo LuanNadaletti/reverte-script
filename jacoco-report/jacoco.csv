@@ -1,0 +1,27 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ReverteScript,com.revertescript.parsers,QueryParser,11,98,3,13,3,26,3,10,0,5
+ReverteScript,com.revertescript.models,AlterTableQuery,21,49,4,0,7,13,4,5,2,5
+ReverteScript,com.revertescript.models,Query,0,15,0,0,0,6,0,3,0,3
+ReverteScript,com.revertescript.models,InsertQuery,6,11,0,0,2,4,2,1,2,1
+ReverteScript,com.revertescript.models,CreateQuery,11,0,0,0,4,0,2,0,2,0
+ReverteScript,com.revertescript,ReverteScript,83,0,8,0,25,0,8,0,4,0
+ReverteScript,com.revertescript.factories,InsertQueryFactory,5,53,1,1,1,11,1,2,0,2
+ReverteScript,com.revertescript.factories,AlterTableQueryFactory,3,60,2,4,0,13,2,3,0,2
+ReverteScript,com.revertescript.factories,CreateQueryFactory,36,0,2,0,10,0,3,0,2,0
+ReverteScript,com.revertescript.enums,QueryType,20,55,7,1,7,9,4,2,0,2
+ReverteScript,com.revertescript.enums,QueryType.new QueryType() {...},2,5,0,0,1,1,1,1,1,1
+ReverteScript,com.revertescript.enums,QueryType.new QueryType() {...},0,9,0,0,0,2,0,2,0,2
+ReverteScript,com.revertescript.enums,QueryType.new QueryType() {...},4,5,0,0,1,1,1,1,1,1
+ReverteScript,com.revertescript.enums,QueryType.new QueryType() {...},4,5,0,0,1,1,1,1,1,1
+ReverteScript,com.revertescript.enums,QueryReverserType,62,0,8,0,12,0,6,0,2,0
+ReverteScript,com.revertescript.enums,CreateQueryType,38,0,4,0,8,0,4,0,2,0
+ReverteScript,com.revertescript.enums,CreateQueryType.new CreateQueryType() {...},7,0,0,0,2,0,2,0,2,0
+ReverteScript,com.revertescript.enums,CreateQueryType.new CreateQueryType() {...},7,0,0,0,2,0,2,0,2,0
+ReverteScript,com.revertescript.enums,QueryReverserType.new QueryReverserType() {...},9,0,0,0,2,0,2,0,2,0
+ReverteScript,com.revertescript.enums,QueryReverserType.new QueryReverserType() {...},9,0,0,0,2,0,2,0,2,0
+ReverteScript,com.revertescript.enums,QueryReverserType.new QueryReverserType() {...},9,0,0,0,2,0,2,0,2,0
+ReverteScript,com.revertescript.reversers,QueryReverser,3,0,0,0,1,0,1,0,1,0
+ReverteScript,com.revertescript.reversers,CreateQueryReverser,22,0,0,0,5,0,2,0,2,0
+ReverteScript,com.revertescript.reversers,InsertQueryReverser,60,0,4,0,9,0,4,0,2,0
+ReverteScript,com.revertescript.reversers,AlterTableQueryReverser,33,0,0,0,8,0,2,0,2,0
+ReverteScript,com.revertescript.util,TextFileReader,45,0,2,0,10,0,2,0,1,0
