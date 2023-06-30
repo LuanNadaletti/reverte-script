@@ -34,19 +34,21 @@ public final class TextFileReader {
      */
     public static String read(File file) throws IOException {
         StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader = new BufferedReader(
+
+        try (BufferedReader bufferedReader = new BufferedReader(
                 Files.newBufferedReader(Paths.get(file.getName())),
-                BUFFER_SIZE);
+                BUFFER_SIZE)) {
+            char[] buffer = new char[BUFFER_SIZE];
 
-        char[] buffer = new char[BUFFER_SIZE];
+            int charsRead = bufferedReader.read(buffer, 0, BUFFER_SIZE);
+            while (charsRead != -1) {
+                stringBuilder.append(buffer, 0, charsRead);
+                charsRead = bufferedReader.read(buffer, 0, BUFFER_SIZE);
+            }
 
-        int charsRead;
-        while ((charsRead = bufferedReader.read(buffer, 0,
-                BUFFER_SIZE)) != -1) {
-            stringBuilder.append(buffer, 0, charsRead);
+            bufferedReader.close();
         }
 
-        bufferedReader.close();
         return stringBuilder.toString();
     }
 
