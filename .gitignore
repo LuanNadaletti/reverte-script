@@ -89,3 +89,7 @@ local.properties
 .project
 .settings/
 target/
+
+# jacoco
+jacoco-report/*
+!jacoco-report/jacoco.xml
