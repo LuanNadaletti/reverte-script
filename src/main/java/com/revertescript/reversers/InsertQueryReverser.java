@@ -33,8 +33,13 @@ public class InsertQueryReverser extends QueryReverser {
 
         StringBuilder where = new StringBuilder();
 
+        String operator;
         for (int i = 0; i < insertQuery.getValues().size(); i++) {
-            where.append(insertQuery.getFields().get(i)).append(" = ")
+            operator = insertQuery.getValues().get(i).equalsIgnoreCase("NULL")
+                    ? " IS "
+                    : " = ";
+
+            where.append(insertQuery.getFields().get(i)).append(operator)
                     .append(insertQuery.getValues().get(i));
 
             if (i != insertQuery.getValues().size() - 1) {
