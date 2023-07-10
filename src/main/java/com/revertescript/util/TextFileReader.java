@@ -49,6 +49,7 @@ public final class TextFileReader {
             bufferedReader.close();
         }
 
+        stringBuilder.setLength(stringBuilder.lastIndexOf(";") + 1);
         return stringBuilder.toString();
     }
 
