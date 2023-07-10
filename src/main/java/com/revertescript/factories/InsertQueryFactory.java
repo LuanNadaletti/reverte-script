@@ -54,7 +54,7 @@ public class InsertQueryFactory implements QueryFactory {
         Matcher matcher = pattern.matcher(statement);
 
         if (!matcher.find()) {
-            throw new IllegalArgumentException("Invalid INSERT statement");
+            throw new IllegalArgumentException("Invalid INSERT statement: " + statement);
         }
 
         String table = matcher.group(1);

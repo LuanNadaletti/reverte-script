@@ -46,7 +46,7 @@ public class CreateQueryFactory implements QueryFactory {
         Matcher matcher = pattern.matcher(statement);
 
         if (!matcher.find()) {
-            throw new IllegalArgumentException("Invalid CREATE statement");
+            throw new IllegalArgumentException("Invalid CREATE statement: " + statement);
         }
 
         String type = matcher.group(1);
