@@ -1,5 +1,6 @@
 package com.revertescript.parsers;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,6 +70,7 @@ public class QueryParser {
             addQuery(currentStatement.toString());
         }
 
+        Collections.reverse(queries);
         return queries;
     }
 
