@@ -2,6 +2,9 @@ package com.revertescript;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.List;
 
 import com.revertescript.enums.QueryReverserType;
@@ -42,9 +45,26 @@ public class ReverteScript {
             String script = TextFileReader.read(new File(filePath));
             List<Query> queries = parseQueries(script);
 
+            File resultFile = new File(handleFilePath(filePath));
+
+            RandomAccessFile stream = new RandomAccessFile(resultFile, "rw");
+            FileChannel channel = stream.getChannel();
+
             for (Query query : queries) {
-                reverseQuery(query);
+                String revertedQuery = reverseQuery(query);
+
+                byte[] revertedQueryBytes = revertedQuery.getBytes();
+                ByteBuffer byteBuffer = ByteBuffer
+                        .allocate(revertedQueryBytes.length);
+
+                byteBuffer.put(revertedQueryBytes);
+                byteBuffer.flip();
+
+                channel.write(byteBuffer);
             }
+
+            stream.close();
+            channel.close();
         } catch (IOException e) {
             System.out.println(
                     "Ocorreu um erro na leitura do arquivo: " + e.getMessage());
@@ -73,7 +93,7 @@ public class ReverteScript {
      * @throws UnsupportedOperationException If the query reversal is not
      *                                       supported.
      */
-    private static void reverseQuery(Query query) {
+    private static String reverseQuery(Query query) {
         QueryReverserType reverserType = QueryReverserType.fromQuery(query);
         if (reverserType == null) {
             throw new IllegalArgumentException(
@@ -86,8 +106,16 @@ public class ReverteScript {
                     "Reversão da query não suportada: " + query);
         }
 
-        String reversedQuery = reverser.reverse(query);
-        System.out.println(reversedQuery);
+        return reverser.reverse(query);
+    }
+
+    private static String handleFilePath(String filePath) {
+        StringBuilder resultFilePath = new StringBuilder(
+                filePath.substring(0, filePath.lastIndexOf("\\")));
+
+        resultFilePath.append("\\reverteScriptResult.sql");
+
+        return resultFilePath.toString();
     }
 
 }
