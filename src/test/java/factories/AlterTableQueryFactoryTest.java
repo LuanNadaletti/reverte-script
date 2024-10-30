@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import com.revertescript.factories.AlterTableQueryFactory;
-import com.revertescript.models.AlterTableQuery;
+import com.revertescript.functional.factories.AlterTableQueryFactory;
+import com.revertescript.functional.models.AlterTableQuery;
 
 /**
  * @author Luan Nadaletti
