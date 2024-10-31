@@ -22,6 +22,6 @@ public class ReverteScriptController {
 	public ResponseEntity<String> reverseScript(@RequestBody String script) {
 		String reversedScript = reverteScriptService.reverteScript(script);
 
-		return ResponseEntity.ok().body(reversedScript);
+		return ResponseEntity.ok(reversedScript);
 	}
 }
